@@ -1,0 +1,11 @@
+.title{
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.block{
+    display: flex;
+    flex-direction: column;
+    padding: 14px 24px 14px 24px;
+    border-bottom: #e3e3e3 solid 1px;;
+}

@@ -1,0 +1,11 @@
+.item{
+    padding: 14px 24px 14px 14px;
+
+    margin: 8px 0 0 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.item:hover{
+    background: #6f7cd6;
+}
