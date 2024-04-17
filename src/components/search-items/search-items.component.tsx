@@ -4,38 +4,6 @@ export const SearchItemsComponent = () => {
     return (
         <>
             {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
-            {<SearchItemComponent/>}
         </>
     )
 }

@@ -4,5 +4,5 @@
     height: 100%;
     background: #fafafa;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
