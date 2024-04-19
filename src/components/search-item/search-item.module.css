@@ -17,3 +17,8 @@
 .item:hover{
     background: #6f7cd6;
 }
+
+.link {
+    text-decoration: none;
+    color: inherit;
+}

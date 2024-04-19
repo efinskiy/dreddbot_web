@@ -1,12 +1,23 @@
+.main_container{
+    width: 100%;
+    margin: 14px 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow: scroll;
+    overflow-x: hidden;
+}
 .container{
     margin: 14px 8px;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
 }
 
 .container__title{
     font-weight: 600;
     font-size: 20px;
+    margin-bottom: 16px;
 }
 
 .container__row{
@@ -19,6 +30,7 @@
     flex-wrap: wrap;
     column-gap: 16px;
     row-gap: 16px;
+    margin-bottom: 24px;
 }
 
 .user_sys_info{

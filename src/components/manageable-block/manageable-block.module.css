@@ -1,0 +1,14 @@
+.container{
+    padding: 8px 8px;
+    margin: 12px 0;
+    border: #e3e3e3 solid 1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title{
+    font-size: 16px;
+    font-weight: 600;
+}
