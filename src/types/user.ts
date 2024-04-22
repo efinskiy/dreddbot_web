@@ -29,3 +29,15 @@ export interface IUser{
     user_picture: string | undefined
     manageable_ref: IManageable[]
 }
+
+export interface IUserUpdateBool {
+    value: boolean
+}
+
+export interface IUserUpdateString {
+    value: string
+}
+
+export interface IUserUpdateResponse{
+    status: string
+}

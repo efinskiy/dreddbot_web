@@ -23,6 +23,8 @@ export const Login = () => {
 
     return (
         <div className={css.login}>
+            <h1 className={css.title}>Login</h1>
+            <h2 className={css.subtitle}>Judge Web Interface</h2>
             <TLoginButton
                 botName="cfdredd_bot"
                 buttonSize={TLoginButtonSize.Large}

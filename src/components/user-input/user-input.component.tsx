@@ -1,5 +1,6 @@
 import css from './user-input.module.css'
 import {useEffect, useState} from "react";
+import {update_commentary} from "../../api/users.ts";
 
 export interface IUserInput {
     user_id: number | undefined;
@@ -17,6 +18,15 @@ export const UserInputComponent = ({value, user_id}: IUserInput) => {
             setInputState(value)
         }
     }, [value]);
+
+    const send_update = (user_id: number | undefined, new_value: string | undefined) => {
+        if (!user_id || !new_value){
+            alert('Невозможно обновить. Проверьте ввод.')
+            return
+        }
+        update_commentary(user_id, new_value).then(r => alert(r.status))
+    }
+
     return (
         <>
         <input
@@ -25,7 +35,7 @@ export const UserInputComponent = ({value, user_id}: IUserInput) => {
             value={inputState?.toString()}
             onChange={(e) => setInputState(e.target.value)}
         />
-        <button onClick={()=>alert(user_id)}>✔</button>
+        <button onClick={()=>send_update(user_id, inputState?.toString())}>✔</button>
         </>
     )
 }

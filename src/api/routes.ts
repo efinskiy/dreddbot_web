@@ -9,7 +9,7 @@ export const HEADERS = {
 
 export const routes = {
     AUTH_ROUTE: `${_BASE_URL}/auth/login`,
-    USERS_GET: `${_BASE_URL}/users`,
+    USERS_GET: `${_BASE_URL}/users/`,
     USER_GET: `${_BASE_URL}/users/user/`,
     USER_SEARCH: `${_BASE_URL}/users/search`,
 }
