@@ -42,7 +42,6 @@ export const UserContainerComponent = () => {
         })
     }
 
-    // @ts-ignore
     return (
         <div className={css.main_container}>
             <div className={css.container}>
@@ -67,7 +66,7 @@ export const UserContainerComponent = () => {
                 <span className={css.container__row}>Уволен: {user?.is_fired ? <span>Да</span> : <span>Нет</span>}</span>
             </div>
             <div className={css.container}>
-                <h1 className={css.container__title}>Участник</h1>
+                <h1 className={css.container__title}>Чаты</h1>
                 {user?.manageable_ref.map(m => <ManageableBlockComponent key={m.id} manageable={m} user_id={user?.id} />)}
                 {user?.manageable_ref && user.manageable_ref.length > 0 ? <></> : <span>Пусто.</span>}
             </div>

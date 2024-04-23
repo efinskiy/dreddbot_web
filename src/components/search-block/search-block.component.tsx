@@ -6,7 +6,7 @@ export const SearchBlockComponent = () => {
 
     return (
         <div className={css.block}>
-            <h3 className={css.title}>Judge Dredd Web</h3>
+            <h3 className={css.title}>Пользователи</h3>
             {<SearchInputComponent/>}
         </div>
     )

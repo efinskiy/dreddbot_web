@@ -1,0 +1,13 @@
+.navigation{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 16px;
+    border-bottom: #cccccc 1px solid;
+    background: #f5f5f5;
+}
+
+.navigation_title{
+    font-size: 24px;
+    padding: 14px 24px 0 14px;
+
+}

@@ -30,6 +30,19 @@ export interface IUser{
     manageable_ref: IManageable[]
 }
 
+export interface IUserClear{
+    id: number
+    telegram_id: number
+    telegram_username: string | undefined
+    full_name: string | undefined
+    has_web_access: boolean
+    is_trusted: boolean
+    marked_for_deletion: boolean
+    is_fired: boolean
+    commentary: string | undefined
+    user_picture: string | undefined
+}
+
 export interface IUserUpdateBool {
     value: boolean
 }

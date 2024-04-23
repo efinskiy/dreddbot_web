@@ -16,8 +16,8 @@ export const Login = () => {
                 auth_user(user, r);
                 Cookies.set('at', r.access_token);
                 Cookies.set('vu', r.expires.toString());
+                navigate('/')
             });
-        navigate('/')
     }
 
 
