@@ -10,8 +10,13 @@
 .link{
     text-decoration: none;
     color: inherit;
+    transition: 0.3s;
 }
 
 .link:nth-child(odd){
-    background-color: #cccccc;
+    background: #f0f4fd;
+}
+
+.link:hover{
+    background-color: #6f7cd6;
 }

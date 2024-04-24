@@ -25,9 +25,6 @@ export const DepartmentListComponent = () => {
                 {
                     departments.map((department: IDepartment) => <>
                         <DepartmentListElementComponent department={department} key={department.id}/>
-                        <DepartmentListElementComponent department={department} key={department.id+1}/>
-                        <DepartmentListElementComponent department={department} key={department.id+2}/>
-
                     </>
                     )
                 }

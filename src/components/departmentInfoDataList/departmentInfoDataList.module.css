@@ -1,0 +1,32 @@
+.dataContainer{
+    width: 50%;
+    height: 100%;
+}
+
+.dataContainer:nth-child(1){
+    border-right: #C2C2C2 solid 1px;
+    /*margin-right: 8px;*/
+}
+
+.dataContainer:nth-child(2){
+    /*margin-left: 8px;*/
+    div{
+        padding-left: 8px;
+    }
+}
+
+.title{
+    /*width: 100%;*/
+    padding-bottom: 8px;
+    font-size: 18px;
+    border-bottom: #C2C2C2 solid 1px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 8px;
+}
+
+.elements{
+    display: flex;
+    flex-direction: column;
+}

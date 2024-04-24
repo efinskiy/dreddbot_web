@@ -7,5 +7,6 @@
 
 .department_list{
     margin-top: auto;
+    min-height: 33%;
     /*margin-bottom: 5px;*/
 }

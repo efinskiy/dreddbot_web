@@ -5,6 +5,7 @@ import {auth_user} from "../../stores/auth.store.ts";
 import Cookies from "js-cookie";
 import {useNavigate} from "react-router-dom";
 import css from './login.module.css';
+import {useEffect} from "react";
 
 
 export const Login = () => {
@@ -16,9 +17,17 @@ export const Login = () => {
                 auth_user(user, r);
                 Cookies.set('at', r.access_token);
                 Cookies.set('vu', r.expires.toString());
-                navigate('/')
+                window.location.reload();
             });
     }
+
+    useEffect(() => {
+        const at = Cookies.get('at')
+        const vu = Cookies.get('vu')
+        if (at && vu){
+            navigate('/')
+        }
+    }, []);
 
 
     return (

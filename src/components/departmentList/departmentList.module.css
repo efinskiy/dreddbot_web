@@ -16,6 +16,7 @@
     display: flex;
     flex-direction: column;
     margin-left: 8px;
+    margin-right: 8px;
 }
 
 .departments_title{

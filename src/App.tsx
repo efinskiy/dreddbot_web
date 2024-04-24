@@ -7,6 +7,9 @@ import {UserContainerComponent} from "./components/user-container/user-container
 import {UsersComponent} from "./pages/users/users.component.tsx";
 import {DepartmentComponent} from "./pages/department/department.component.tsx";
 import {AdministrationComponent} from "./pages/administration/administration.component.tsx";
+import {DepartmentInfoComponent} from "./components/departmentInfo/departmentInfo.component.tsx";
+import {EmptyOutletComponent} from "./components/emptyOutlet/emptyOutlet.component.tsx";
+import {DepartmentObjectEditComponent} from "./components/departmentObjectsEdit/departmentObjectEdit.component.tsx";
 // import {useEffect} from "react";
 // import {get_users} from "./api/users.ts";
 // import {writeUsers} from "./stores/users.store.ts";
@@ -32,9 +35,17 @@ const router = createBrowserRouter([
     loader: loader,
     children: [
       {
+        path: '/',
+        element: <EmptyOutletComponent/>
+      },
+      {
         path: '/user',
         element: <UsersComponent/>,
         children: [
+          {
+            path: '/user',
+            element: <EmptyOutletComponent/>
+          },
           {
             path: '/user/:id',
             element: <UserContainerComponent/>
@@ -44,7 +55,24 @@ const router = createBrowserRouter([
       {
         path: '/department',
         element: <DepartmentComponent/>,
-        children: []
+        children: [
+          {
+            path: '/department',
+            element: <EmptyOutletComponent/>
+          },
+          {
+            path: '/department/:id',
+            element: <DepartmentInfoComponent/>
+          },
+          {
+            path: '/department/:id/users',
+            element: <DepartmentObjectEditComponent/>
+          },
+          {
+            path: '/department/:id/manageables',
+            element: <DepartmentObjectEditComponent/>
+          }
+        ]
       },
       {
         path: '/administration',

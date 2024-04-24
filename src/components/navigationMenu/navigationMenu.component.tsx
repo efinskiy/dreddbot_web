@@ -11,6 +11,7 @@ export const NavigationMenuComponent = () => {
                 {<NavigationMenuElementComponent icon={'group'} title={'Отделы'} link={'/department'}/>}
                 {/*{<NavigationMenuElementComponent icon={'manage_accounts'} title={}/>}*/}
                 {<NavigationMenuElementComponent icon={'admin_panel_settings'} title={'Администрирование'} link={'/administration'}/>}
+                {<NavigationMenuElementComponent icon={'forum'} title={'Чаты'} link={'/manageable'}/>}
             </div>
             <div className={css.menu}>
                 {<NavigationMenuElementComponent icon={'admin_panel_settings'} title={'Я'} link={'/me'}/>}
