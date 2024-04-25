@@ -13,6 +13,7 @@ export const routes = {
     USERS_GET: `${_BASE_URL}/users/`,
     USER_GET: `${_BASE_URL}/users/user/`,
     USER_SEARCH: `${_BASE_URL}/users/search`,
+    USERS_GET_ALL: `${_BASE_URL}/users/all`,
 
     DEPARTMENT_GET_CREATE: `${_BASE_URL}/department/`,
     DEPARTMENT_GET_ONE: `${_BASE_URL}/department/get`,
@@ -21,4 +22,6 @@ export const routes = {
     DEPARTMENT_USERS_GET: `${_BASE_URL}/department/users`,
     DEPARTMENT_MANAGEABLES_GET: `${_BASE_URL}/department/manageables`,
     DEPARTMENT_MANAGEABLES_ASSIGN: `${_BASE_URL}/department/manageables/assign`,
+
+    MANAGEABLES_GET_ALL: `${_BASE_URL}/manageables`,
 }

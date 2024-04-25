@@ -2,6 +2,7 @@ import axios from "axios";
 import {HEADERS, routes} from "./routes.ts";
 import {IDepartment, IDepartmentWithManageables, IDepartmentWithUsers} from "../types/departments.ts";
 import {IUserClear} from "../types/user.ts";
+import {IDepartmentChanges} from "../components/departmentObjectsEdit/departmentObjectEditUsers.component.tsx";
 
 
 export const GetAllDepartments = async () => {
@@ -38,11 +39,29 @@ export const GetDepartmentManageables = async (id: number) => {
     })
 }
 
-export const GetDepartmentAvailableUsers = async (id: number) => {
-    return await axios.get<IUserClear[]>(routes.DEPARTMENT_GET_AVAILABLE, {
+export const GetAllUsers = async () => {
+    return await axios.get<IUserClear[]>(routes.USERS_GET_ALL, {
         headers: HEADERS,
-        params: {
-            dep_id: id
-        }
     })
+}
+
+
+export const UpdateDepartmentUsers = async (id: number, update: IDepartmentChanges) => {
+    return await axios.post<IDepartmentChanges>(
+        routes.DEPARTMENT_GET_CREATE+id+'/users/edit',
+        update,
+        {
+            headers: HEADERS
+        }
+    )
+}
+
+export const UpdateDepartmentManageables = async (id: number, update: IDepartmentChanges) => {
+    return await axios.post<IDepartmentChanges>(
+        routes.DEPARTMENT_GET_CREATE+id+'/manageables/edit',
+        update,
+        {
+            headers: HEADERS
+        }
+    )
 }

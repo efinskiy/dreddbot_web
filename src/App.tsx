@@ -9,7 +9,10 @@ import {DepartmentComponent} from "./pages/department/department.component.tsx";
 import {AdministrationComponent} from "./pages/administration/administration.component.tsx";
 import {DepartmentInfoComponent} from "./components/departmentInfo/departmentInfo.component.tsx";
 import {EmptyOutletComponent} from "./components/emptyOutlet/emptyOutlet.component.tsx";
-import {DepartmentObjectEditComponent} from "./components/departmentObjectsEdit/departmentObjectEdit.component.tsx";
+import {DepartmentObjectEditUsersComponent} from "./components/departmentObjectsEdit/departmentObjectEditUsers.component.tsx";
+import {
+  DepartmentObjectEditManageablesComponent
+} from "./components/departmentObjectsEdit/departmentObjectEditManageables.component.tsx";
 // import {useEffect} from "react";
 // import {get_users} from "./api/users.ts";
 // import {writeUsers} from "./stores/users.store.ts";
@@ -66,11 +69,11 @@ const router = createBrowserRouter([
           },
           {
             path: '/department/:id/users',
-            element: <DepartmentObjectEditComponent/>
+            element: <DepartmentObjectEditUsersComponent/>
           },
           {
             path: '/department/:id/manageables',
-            element: <DepartmentObjectEditComponent/>
+            element: <DepartmentObjectEditManageablesComponent/>
           }
         ]
       },

@@ -1,0 +1,88 @@
+import {useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
+// @ts-ignore
+import MultiSelect from "@kenshooui/react-multi-select";
+import css from './departmentObjectEdit.module.css'
+import "@kenshooui/react-multi-select/dist/style.css"
+import {IManageable} from "../../types/manageable.ts";
+import {GetDepartmentManageables, UpdateDepartmentManageables} from "../../api/departments.ts";
+import {GetAllManageables} from "../../api/manageables.ts";
+
+
+interface IManageableInSelect{
+    id: number
+    label: string
+}
+
+export interface IDepartmentChanges{
+    added: Array<number>
+    deleted: Array<number>
+}
+
+
+export const DepartmentObjectEditManageablesComponent = () => {
+    const {id} = useParams()
+    const [manageableInSelectAvailable, setManageableInSelectAvailable] = useState<IManageableInSelect[]>([])
+    const [manageableInSelectSelected, setManageableInSelectSelected] = useState<IManageableInSelect[]>([])
+    const [manageableInSelectSelectedInitial, setManageableInSelectSelectedInitial] = useState<IManageableInSelect[]>([])
+
+    useEffect(() => {
+        GetDepartmentManageables(Number(id)).then(d => {
+            const transformed = transform(d.data.manageables)
+            setManageableInSelectSelected(transformed)
+            setManageableInSelectSelectedInitial(transformed)
+        })
+        GetAllManageables().then(d => {
+            setManageableInSelectAvailable(transform(d.data))
+        })
+    }, []);
+
+    const transformToSelectType = (obj: IManageable): IManageableInSelect => {
+        return {
+            id: obj.id,
+            label: obj.title
+        }
+    }
+
+    const transform = (objs: IManageable[]): IManageableInSelect[] => {
+        return objs.map(transformToSelectType)
+    }
+
+    const updateManageables = () => {
+        const data = figureChanges(manageableInSelectSelectedInitial, manageableInSelectSelected)
+        console.log(data)
+        UpdateDepartmentManageables(Number(id), data).then(
+            d => {
+                d.status === 200 ? alert('Обновлено')
+                    : alert('Ошибка.')
+            }
+        )
+    }
+
+    const figureChanges = (initial: IManageableInSelect[], final: IManageableInSelect[]) : IDepartmentChanges => {
+        // Найти добавленные элементы
+        const addedElements = final.filter(item2 => !initial.some(item1 => item1.id === item2.id));
+
+        // Найти удаленные элементы
+        const removedElements = initial.filter(item1 => !final.some(item2 => item2.id === item1.id));
+
+        return {
+            added: addedElements.map(addedElement => addedElement.id),
+            deleted: removedElements.map(removedElement => removedElement.id),
+        }
+    }
+
+
+    return (
+        <div className={css.block}>
+            <MultiSelect
+                items={manageableInSelectAvailable}
+                selectedItems={manageableInSelectSelected}
+                onChange={d => {setManageableInSelectSelected(d)}}
+                showSearch={true}
+                showSelectAll={false}
+            />
+            <button onClick={() => updateManageables()}>Сохранить</button>
+        </div>
+    )
+}

@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@hookstate/core": "^4.0.1",
+    "@huner2/react-column-select": "^1.0.4",
+    "@kenshooui/react-multi-select": "^1.1.6",
     "@types/js-cookie": "^3.0.6",
     "axios": "^1.6.8",
     "classnames": "^2.5.1",

@@ -2,5 +2,10 @@
     /*max-height: */
     overflow: scroll;
     overflow-x: hidden;
-    max-height: 66%;
+    /*max-height: 66%;*/
+    height: 100%;
+}
+
+.half{
+    width: 50%;
 }

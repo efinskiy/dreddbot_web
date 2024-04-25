@@ -7,6 +7,8 @@ export const NavigationMenuComponent = () => {
     return (
         <div className={classNames(css.menu, css.menu_space)}>
             <div className={css.menu}>
+                <div className={css.logo}>
+                </div>
                 {<NavigationMenuElementComponent icon={'account_circle'} title={'Пользователи'} link={'/user'}/>}
                 {<NavigationMenuElementComponent icon={'group'} title={'Отделы'} link={'/department'}/>}
                 {/*{<NavigationMenuElementComponent icon={'manage_accounts'} title={}/>}*/}
