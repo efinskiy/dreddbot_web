@@ -1,6 +1,8 @@
 import css from './user-input.module.css'
 import {useEffect, useState} from "react";
 import {update_commentary} from "../../api/users.ts";
+import {updateCfData} from "../../utils/debug.ts";
+import {useSystemStore} from "../../stores/system.store.ts";
 
 export interface IUserInput {
     user_id: number | undefined;
@@ -18,13 +20,18 @@ export const UserInputComponent = ({value, user_id}: IUserInput) => {
             setInputState(value)
         }
     }, [value]);
+    const useSystem = useSystemStore()
+
 
     const send_update = (user_id: number | undefined, new_value: string | undefined) => {
         if (!user_id || !new_value){
             alert('Невозможно обновить. Проверьте ввод.')
             return
         }
-        update_commentary(user_id, new_value).then(r => alert(r.status))
+        update_commentary(user_id, new_value).then(r => {
+            updateCfData(r, useSystem)
+            alert(r.status)
+        })
     }
 
     return (

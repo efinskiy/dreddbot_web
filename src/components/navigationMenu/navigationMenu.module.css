@@ -19,3 +19,16 @@
     /*width: 100%;*/
     background-repeat: no-repeat;
 }
+
+.absoluteUserInfo{
+    position: absolute;
+    color: #e3e3e3;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 8px;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+

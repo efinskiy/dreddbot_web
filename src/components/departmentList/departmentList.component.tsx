@@ -6,13 +6,19 @@ import {DepartmentListElementComponent} from "../departmentListElement/departmen
 import {Button} from "../buttons/button.component.tsx";
 // import {redirect} from "react-router-dom";
 import {useNavigate} from "react-router-dom";
+import {useSystemStore} from "../../stores/system.store.ts";
+import {updateCfData} from "../../utils/debug.ts";
 
 export const DepartmentListComponent = () => {
     const [departments, setDepartments] = useState<IDepartment[]>([])
     const navigate = useNavigate();
+    const useSystem = useSystemStore()
 
     useEffect(() => {
-        GetAllDepartments().then(res => setDepartments(res.data))
+        GetAllDepartments().then(res => {
+            setDepartments(res.data)
+            updateCfData(res, useSystem)
+        })
     }, []);
 
     return (

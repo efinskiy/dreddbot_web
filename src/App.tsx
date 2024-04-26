@@ -13,6 +13,7 @@ import {DepartmentObjectEditUsersComponent} from "./components/departmentObjects
 import {
   DepartmentObjectEditManageablesComponent
 } from "./components/departmentObjectsEdit/departmentObjectEditManageables.component.tsx";
+import {ManageableComponent} from "./pages/manageable/manageable.component.tsx";
 // import {useEffect} from "react";
 // import {get_users} from "./api/users.ts";
 // import {writeUsers} from "./stores/users.store.ts";
@@ -20,7 +21,7 @@ import {
 
 
 const loader = async () => {
-  if (!Cookies.get('at')) {
+  if (Cookies.get('at')) {
     const valid_until : number = Number(Cookies.get('vu'));
     const unix_now : number = Date.now() / 1000;
     if (valid_until<=unix_now || isNaN(valid_until)) {
@@ -78,10 +79,20 @@ const router = createBrowserRouter([
         ]
       },
       {
+        path: '/manageable',
+        element: <ManageableComponent/>,
+        children: [
+          {
+            path: '/manageable',
+            element: <EmptyOutletComponent/>
+          }
+        ]
+      },
+      {
         path: '/administration',
         element: <AdministrationComponent/>,
         children: []
-      }
+      },
     ]
   },
   {

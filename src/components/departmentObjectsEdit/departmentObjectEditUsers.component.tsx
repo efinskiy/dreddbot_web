@@ -6,6 +6,8 @@ import {GetAllUsers, GetDepartmentUsers, UpdateDepartmentUsers} from "../../api/
 import MultiSelect from "@kenshooui/react-multi-select";
 import css from './departmentObjectEdit.module.css'
 import "@kenshooui/react-multi-select/dist/style.css"
+import {useSystemStore} from "../../stores/system.store.ts";
+import {updateCfData} from "../../utils/debug.ts";
 
 
 interface IUserInSelect{
@@ -24,15 +26,21 @@ export const DepartmentObjectEditUsersComponent = () => {
     const [usersInSelectAvailable, setUsersInSelectAvailable] = useState<IUserInSelect[]>([])
     const [usersInSelectSelected, setUsersInSelectSelected] = useState<IUserInSelect[]>([])
     const [usersInSelectSelectedInitial, setUsersInSelectSelectedInitial] = useState<IUserInSelect[]>([])
+    const useSystem = useSystemStore()
+
 
     useEffect(() => {
         GetDepartmentUsers(Number(id)).then(d => {
             const transformed = transform(d.data.users)
             setUsersInSelectSelected(transformed)
             setUsersInSelectSelectedInitial(transformed)
+            updateCfData(d, useSystem)
+
         })
         GetAllUsers().then(d => {
             setUsersInSelectAvailable(transform(d.data))
+            updateCfData(d, useSystem)
+
         })
     }, []);
 
@@ -52,8 +60,10 @@ export const DepartmentObjectEditUsersComponent = () => {
         console.log(data)
         UpdateDepartmentUsers(Number(id), data).then(
             d => {
+                updateCfData(d, useSystem)
                 d.status === 200 ? alert('Обновлено')
                     : alert('Ошибка.')
+
             }
         )
     }

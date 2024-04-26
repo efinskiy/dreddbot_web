@@ -28,7 +28,7 @@ export const auth_user = (user: IUserAuthData, auth_data: IAuthResponse200) => {
         user_id: user.id,
         name: user.first_name + user.last_name,
         valid_until: auth_data.expires,
-        access_token: auth_data.access_token
+        access_token: auth_data.access_token,
     })
 }
 

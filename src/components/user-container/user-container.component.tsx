@@ -7,13 +7,19 @@ import {useEffect, useState} from "react";
 import {fire_user, get_user, grant_web_access} from "../../api/users.ts";
 import {ManageableBlockComponent} from "../manageable-block/manageable-block.component.tsx";
 import {UserInputComponent} from "../user-input/user-input.component.tsx";
+import {useSystemStore} from "../../stores/system.store.ts";
+import {updateCfData} from "../../utils/debug.ts";
 
 export const UserContainerComponent = () => {
     const { id} = useParams()
     const [user, setUser] = useState<IUser>()
+    const useSystem = useSystemStore()
 
     useEffect(() => {
-        get_user(Number(id)).then(d => setUser(d))
+        get_user(Number(id)).then(d => {
+            updateCfData(d, useSystem)
+            setUser(d.data)
+        })
     }, [id]);
 
 
@@ -23,7 +29,8 @@ export const UserContainerComponent = () => {
         }
 
         grant_web_access(user_id, !current_value).then(r => {
-            r.status == 'updated' && user !== undefined ?
+            updateCfData(r, useSystem)
+            r.data.status == 'updated' && user !== undefined ?
                 setUser({...user, has_web_access: !user.has_web_access})
                 : alert('')
         })
@@ -36,6 +43,7 @@ export const UserContainerComponent = () => {
         }
 
         fire_user(user_id).then(r => {
+            updateCfData(r, useSystem)
             r.status == 200 ?
                 setUser({...user, is_fired: !user.is_fired, is_trusted: !user.is_trusted})
                 : alert('')

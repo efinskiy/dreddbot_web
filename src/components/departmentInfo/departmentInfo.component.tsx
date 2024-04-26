@@ -7,23 +7,32 @@ import {GetDepartment, GetDepartmentManageables, GetDepartmentUsers} from "../..
 import css from './departmentInfo.module.css'
 import classNames from "classnames";
 import {DepartmentInfoDataListComponent} from "../departmentInfoDataList/departmentInfoDataList.component.tsx";
+import {useSystemStore} from "../../stores/system.store.ts";
+import {updateCfData} from "../../utils/debug.ts";
 
 export const DepartmentInfoComponent = () => {
     const { id} = useParams()
     const [department, setDepartment] = useState<IDepartment | null>(null);
     const [users, setUsers] = useState<IUserClear[]>([])
     const [manageables, setManageables] = useState<IManageable[]>([])
+    const useSystem = useSystemStore()
+
 
 
     useEffect(() => {
         GetDepartment(Number(id)).then(d => {
             setDepartment(d.data)
+            updateCfData(d, useSystem)
         })
         GetDepartmentUsers(Number(id)).then(d => {
             setUsers(d.data.users)
+            updateCfData(d, useSystem)
+
         })
         GetDepartmentManageables(Number(id)).then(d => {
             setManageables(d.data.manageables)
+            updateCfData(d, useSystem)
+
         })
     }, [id]);
 

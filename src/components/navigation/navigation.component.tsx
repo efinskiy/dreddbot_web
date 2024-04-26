@@ -8,9 +8,9 @@ export const NavigationComponent = (() => {
     return (
         <div className={classNames(css.nav_main)}>
             {<SearchBlockComponent/>}
-            {<SearchItemsComponent/>}
-
-
+            <div className={css.nav_items}>
+                {<SearchItemsComponent/>}
+            </div>
         </div>
     )
 })

@@ -6,17 +6,20 @@ import Cookies from "js-cookie";
 import {useNavigate} from "react-router-dom";
 import css from './login.module.css';
 import {useEffect} from "react";
+import {useSystemStore} from "../../stores/system.store.ts";
+import {updateCfData} from "../../utils/debug.ts";
 
 
 export const Login = () => {
     const navigate = useNavigate();
-
+    const useSystem = useSystemStore()
     const login_user = (user: IUserAuthData) => {
         call_auth_user(user).then(
             (r) => {
-                auth_user(user, r);
-                Cookies.set('at', r.access_token);
-                Cookies.set('vu', r.expires.toString());
+                auth_user(user, r.data);
+                Cookies.set('at', r.data.access_token);
+                Cookies.set('vu', r.data.expires.toString());
+                updateCfData(r, useSystem)
                 window.location.reload();
             });
     }

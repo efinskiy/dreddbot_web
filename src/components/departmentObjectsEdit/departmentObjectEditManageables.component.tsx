@@ -7,6 +7,8 @@ import "@kenshooui/react-multi-select/dist/style.css"
 import {IManageable} from "../../types/manageable.ts";
 import {GetDepartmentManageables, UpdateDepartmentManageables} from "../../api/departments.ts";
 import {GetAllManageables} from "../../api/manageables.ts";
+import {useSystemStore} from "../../stores/system.store.ts";
+import {updateCfData} from "../../utils/debug.ts";
 
 
 interface IManageableInSelect{
@@ -25,15 +27,21 @@ export const DepartmentObjectEditManageablesComponent = () => {
     const [manageableInSelectAvailable, setManageableInSelectAvailable] = useState<IManageableInSelect[]>([])
     const [manageableInSelectSelected, setManageableInSelectSelected] = useState<IManageableInSelect[]>([])
     const [manageableInSelectSelectedInitial, setManageableInSelectSelectedInitial] = useState<IManageableInSelect[]>([])
+    const useSystem = useSystemStore()
+
 
     useEffect(() => {
         GetDepartmentManageables(Number(id)).then(d => {
             const transformed = transform(d.data.manageables)
             setManageableInSelectSelected(transformed)
             setManageableInSelectSelectedInitial(transformed)
+            updateCfData(d, useSystem)
+
         })
         GetAllManageables().then(d => {
             setManageableInSelectAvailable(transform(d.data))
+            updateCfData(d, useSystem)
+
         })
     }, []);
 
@@ -53,6 +61,7 @@ export const DepartmentObjectEditManageablesComponent = () => {
         console.log(data)
         UpdateDepartmentManageables(Number(id), data).then(
             d => {
+                updateCfData(d, useSystem)
                 d.status === 200 ? alert('Обновлено')
                     : alert('Ошибка.')
             }
