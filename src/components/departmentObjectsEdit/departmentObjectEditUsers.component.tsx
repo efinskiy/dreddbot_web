@@ -87,7 +87,7 @@ export const DepartmentObjectEditUsersComponent = () => {
             <MultiSelect
                 items={usersInSelectAvailable}
                 selectedItems={usersInSelectSelected}
-                onChange={d => {setUsersInSelectSelected(d)}}
+                onChange={(d: IUserInSelect[]) => {setUsersInSelectSelected(d)}}
                 showSearch={true}
                 showSelectAll={false}
             />

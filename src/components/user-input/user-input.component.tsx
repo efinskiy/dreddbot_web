@@ -12,7 +12,8 @@ export interface IUserInput {
 
 export const UserInputComponent = ({value, user_id}: IUserInput) => {
     const [inputState, setInputState] =
-        useState<string | undefined>('')
+        useState<string | undefined>('');
+
     useEffect(() => {
         if (value == null){
             setInputState('')
@@ -20,7 +21,7 @@ export const UserInputComponent = ({value, user_id}: IUserInput) => {
             setInputState(value)
         }
     }, [value]);
-    const useSystem = useSystemStore()
+    const useSystem = useSystemStore();
 
 
     const send_update = (user_id: number | undefined, new_value: string | undefined) => {

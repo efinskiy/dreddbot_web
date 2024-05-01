@@ -58,7 +58,7 @@ export const DepartmentObjectEditManageablesComponent = () => {
 
     const updateManageables = () => {
         const data = figureChanges(manageableInSelectSelectedInitial, manageableInSelectSelected)
-        console.log(data)
+        // console.log(data)
         UpdateDepartmentManageables(Number(id), data).then(
             d => {
                 updateCfData(d, useSystem)
@@ -87,7 +87,7 @@ export const DepartmentObjectEditManageablesComponent = () => {
             <MultiSelect
                 items={manageableInSelectAvailable}
                 selectedItems={manageableInSelectSelected}
-                onChange={d => {setManageableInSelectSelected(d)}}
+                onChange={(d:IManageableInSelect[]) => {setManageableInSelectSelected(d)}}
                 showSearch={true}
                 showSelectAll={false}
             />

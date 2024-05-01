@@ -17,7 +17,7 @@ interface IDepartmentInfoDataListProps {
 }
 
 export const DepartmentInfoDataListComponent = ({title, type, users, manageables, dep_id}: IDepartmentInfoDataListProps) => {
-    // @ts-ignore
+    //@ts-ignore
     const navigate = useNavigate()
     return (
         <div className={css.dataContainer}>

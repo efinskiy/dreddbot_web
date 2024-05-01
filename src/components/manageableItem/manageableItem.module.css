@@ -1,0 +1,24 @@
+.item{
+    padding: 14px 24px 14px 6px;
+    margin: 8px 0 0 14px;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    transition: 0.2s;
+}
+
+.title{
+    padding-left: 8px;
+    font-weight: 600;
+}
+
+.item:hover{
+    background: #6f7cd6;
+}
+
+.link{
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}

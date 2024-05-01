@@ -25,4 +25,5 @@ export const routes = {
     DEPARTMENT_MANAGEABLES_ASSIGN: `${_BASE_URL}/department/manageables/assign`,
 
     MANAGEABLES_GET_ALL: `${_BASE_URL}/manageables`,
+    MANAGEABLES_GET_ONE: `${_BASE_URL}/manageables/`,
 }
