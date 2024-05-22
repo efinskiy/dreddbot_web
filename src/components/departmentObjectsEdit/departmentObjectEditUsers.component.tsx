@@ -6,6 +6,7 @@ import {
     GetDepartmentUsers,
     UpdateDepartmentUsers,
 } from '../../api/departments.ts';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import MultiSelect from '@kenshooui/react-multi-select';
 import css from './departmentObjectEdit.module.css';

@@ -21,7 +21,8 @@ export const DepartmentInfoDataListComponent = ({
     manageables,
     dep_id,
 }: IDepartmentInfoDataListProps) => {
-    //@ts-ignore
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     const navigate = useNavigate();
     return (
         <div className={css.dataContainer}>

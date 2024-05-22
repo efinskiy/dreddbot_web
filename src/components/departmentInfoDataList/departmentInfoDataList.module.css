@@ -1,23 +1,19 @@
 .dataContainer {
     width: 50%;
-    /*height: 67%;*/
     overflow-y: scroll;
 }
 
 .dataContainer:nth-child(1) {
     border-right: #c2c2c2 solid 1px;
-    /*margin-right: 8px;*/
 }
 
 .dataContainer:nth-child(2) {
-    /*margin-left: 8px;*/
     div {
         padding-left: 8px;
     }
 }
 
 .title {
-    /*width: 100%;*/
     padding-bottom: 8px;
     font-size: 18px;
     border-bottom: #c2c2c2 solid 1px;
@@ -30,5 +26,4 @@
 .elements {
     display: flex;
     flex-direction: column;
-    /*height: 100%;*/
 }
