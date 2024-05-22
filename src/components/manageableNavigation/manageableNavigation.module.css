@@ -1,4 +1,4 @@
-.navigation{
+.navigation {
     height: 100%;
     max-width: 420px;
     min-width: 300px;
@@ -8,32 +8,31 @@
     border-right: #e3e3e3 solid 1px;
 }
 
-.wrapper{
+.wrapper {
     padding-right: 8px;
     padding-left: 8px;
     /*padding-top: 8px;*/
     display: flex;
     flex-direction: column;
     height: 100%;
-
 }
 
-.searchBlock{
+.searchBlock {
     padding: 14px 24px 14px 16px;
     border-bottom: #e3e3e3 solid 1px;
 }
 
-.searchTitle{
+.searchTitle {
     font-size: 24px;
     margin-bottom: 16px;
     /*font-weight: 500;*/
 }
 
-.items{
+.items {
     overflow-y: scroll;
 }
 
-.searchInput{
+.searchInput {
     height: 28px;
     font-size: 18px;
     padding: 0 12px;

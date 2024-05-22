@@ -1,4 +1,4 @@
-.item{
+.item {
     padding: 14px 24px 14px 14px;
     margin: 8px 0 0 14px;
     cursor: pointer;
@@ -8,14 +8,14 @@
     transition: 0.2s;
 }
 
-.tg_name{
+.tg_name {
     font-weight: 600;
 }
-.commentary{
+.commentary {
     font-style: italic;
 }
 
-.item:hover{
+.item:hover {
     background: #6f7cd6;
 }
 

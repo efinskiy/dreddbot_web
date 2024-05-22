@@ -1,4 +1,4 @@
-.content{
+.content {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -6,7 +6,7 @@
     overflow: hidden;
 }
 
-.department_list{
+.department_list {
     margin-top: auto;
     min-height: 33%;
     /*margin-bottom: 5px;*/

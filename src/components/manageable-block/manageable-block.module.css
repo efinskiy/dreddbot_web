@@ -1,4 +1,4 @@
-.container{
+.container {
     padding: 8px 8px;
     margin: 12px 0;
     border: #e3e3e3 solid 1px;
@@ -8,7 +8,7 @@
     align-items: center;
 }
 
-.title{
+.title {
     font-size: 16px;
     font-weight: 600;
 }

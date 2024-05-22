@@ -1,4 +1,4 @@
-.departmentElement{
+.departmentElement {
     font-size: 16px;
     padding: 8px 8px;
 }
@@ -7,16 +7,16 @@
 /*    background: #C2C2C2;*/
 /*}*/
 
-.link{
+.link {
     text-decoration: none;
     color: inherit;
     transition: 0.3s;
 }
 
-.link:nth-child(odd){
+.link:nth-child(odd) {
     background: #f0f4fd;
 }
 
-.link:hover{
+.link:hover {
     background-color: #6f7cd6;
 }

@@ -3,5 +3,5 @@ export const AdministrationComponent = () => {
         <>
             <h3>Раздел администрирования</h3>
         </>
-    )
-}
+    );
+};

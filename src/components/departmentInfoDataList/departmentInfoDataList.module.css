@@ -1,34 +1,33 @@
-.dataContainer{
+.dataContainer {
     width: 50%;
     /*height: 67%;*/
     overflow-y: scroll;
-    
 }
 
-.dataContainer:nth-child(1){
-    border-right: #C2C2C2 solid 1px;
+.dataContainer:nth-child(1) {
+    border-right: #c2c2c2 solid 1px;
     /*margin-right: 8px;*/
 }
 
-.dataContainer:nth-child(2){
+.dataContainer:nth-child(2) {
     /*margin-left: 8px;*/
-    div{
+    div {
         padding-left: 8px;
     }
 }
 
-.title{
+.title {
     /*width: 100%;*/
     padding-bottom: 8px;
     font-size: 18px;
-    border-bottom: #C2C2C2 solid 1px;
+    border-bottom: #c2c2c2 solid 1px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-right: 8px;
 }
 
-.elements{
+.elements {
     display: flex;
     flex-direction: column;
     /*height: 100%;*/

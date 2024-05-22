@@ -1,13 +1,17 @@
 import css from './search-item.module.css';
-import {Link} from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 export interface ISearchItemComponent {
-    id: number
+    id: number;
     tg_name: string | undefined;
-    commentary: string | undefined
+    commentary: string | undefined;
 }
 
-export const SearchItemComponent = ({id, tg_name, commentary}: ISearchItemComponent) => {
+export const SearchItemComponent = ({
+    id,
+    tg_name,
+    commentary,
+}: ISearchItemComponent) => {
     return (
         <Link to={`/user/${id}`} className={css.link}>
             <div className={css.item}>
@@ -15,5 +19,5 @@ export const SearchItemComponent = ({id, tg_name, commentary}: ISearchItemCompon
                 <span className={css.commentary}>{commentary}</span>
             </div>
         </Link>
-    )
-}
+    );
+};
