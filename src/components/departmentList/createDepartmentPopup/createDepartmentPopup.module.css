@@ -1,58 +1,58 @@
-.popup{
+.popup {
     width: 500px;
     background-color: #f8f8f8;
     border-radius: 5px 5px 0 0;
-    border: 1px solid #C2C2C2;
+    border: 1px solid #c2c2c2;
     padding: 16px 8px;
 }
 
-.header{
+.header {
     display: flex;
     justify-content: space-between;
     padding-bottom: 24px;
     /*border-bottom: 1px solid #000;*/
 }
 
-.header > h3{
+.header > h3 {
     font-size: 18px;
     font-weight: 500;
 }
 
-.close{
+.close {
     cursor: pointer;
 }
 
-.content{
+.content {
     display: flex;
     flex-direction: column;
 }
 
-.field{
+.field {
     width: 100%;
     display: flex;
     justify-content: space-between;
     margin-bottom: 8px;
 }
 
-.field_input{
+.field_input {
     width: 300px;
     border: none;
-    border-bottom: 1px solid #C2C2C2;
+    border-bottom: 1px solid #c2c2c2;
     background-color: #f8f8f8;
     outline: none;
 }
 
-.control_block{
+.control_block {
     margin-top: 16px;
 }
 
-.confirm_button{
+.confirm_button {
     border: none;
     border-bottom: 1px solid #3c9b3c;
     cursor: pointer;
     padding: 8px 16px 8px 16px;
 }
 
-.confirm_button:hover{
+.confirm_button:hover {
     background-color: #3c9b3c;
 }

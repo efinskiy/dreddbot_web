@@ -5,22 +5,21 @@
     height: 67%;
 }
 
-.header{
-
+.header {
 }
 
-.title{
+.title {
     font-size: 18px;
     font-weight: 500;
 }
 
-.containerRow{
+.containerRow {
     display: flex;
     flex-direction: row;
     width: 100%;
     height: 100%;
 }
 
-.m16{
+.m16 {
     margin: 16px 0 16px 0;
 }

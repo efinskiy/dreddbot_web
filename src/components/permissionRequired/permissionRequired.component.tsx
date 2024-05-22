@@ -1,27 +1,31 @@
-import {useAuthState} from "../../stores/auth.store.ts";
-import {ReactNode, useEffect, useState} from "react";
+import { useAuthState } from '../../stores/auth.store.ts';
+import { ReactNode, useEffect, useState } from 'react';
 
 interface Props {
     children: ReactNode;
-    permissions: string[]
+    permissions: string[];
 }
 
-export const PermissionRequiredComponent = ({ children, permissions }: Props) => {
-    const useAuth = useAuthState()
-    const [accessGranted, setAccessGranted] = useState(false)
+export const PermissionRequiredComponent = ({
+    children,
+    permissions,
+}: Props) => {
+    const useAuth = useAuthState();
+    const [accessGranted, setAccessGranted] = useState(false);
 
     useEffect(() => {
-        if (useAuth.permissions.get().includes('admin.all') ||
-            permissions.every(ai => useAuth.permissions.get().includes(ai))){
-            setAccessGranted(true)
+        if (
+            useAuth.permissions.get().includes('admin.all') ||
+            permissions.every((ai) => useAuth.permissions.get().includes(ai))
+        ) {
+            setAccessGranted(true);
         }
-        console.log(accessGranted)
+        console.log(accessGranted);
     }, [useAuth]);
     if (accessGranted) {
-        return children
-    }
-    else {
-        return null
+        return children;
+    } else {
+        return null;
     }
     // return children
-}
+};

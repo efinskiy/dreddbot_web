@@ -1,4 +1,4 @@
-.block{
+.block {
     /*max-height: */
     overflow: scroll;
     overflow-x: hidden;
@@ -6,6 +6,6 @@
     height: 100%;
 }
 
-.half{
+.half {
     width: 50%;
 }

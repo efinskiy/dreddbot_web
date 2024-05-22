@@ -1,37 +1,34 @@
-import {TLoginButton, TLoginButtonSize} from "react-telegram-auth";
-import {IUserAuthData} from "../../types/user.ts";
-import {call_auth_user} from "../../api/auth.ts";
-import {auth_user} from "../../stores/auth.store.ts";
-import Cookies from "js-cookie";
-import {useNavigate} from "react-router-dom";
+import { TLoginButton, TLoginButtonSize } from 'react-telegram-auth';
+import { IUserAuthData } from '../../types/user.ts';
+import { call_auth_user } from '../../api/auth.ts';
+import { auth_user } from '../../stores/auth.store.ts';
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 import css from './login.module.css';
-import {useEffect} from "react";
-import {useSystemStore} from "../../stores/system.store.ts";
-import {updateCfData} from "../../utils/debug.ts";
-
+import { useEffect } from 'react';
+import { useSystemStore } from '../../stores/system.store.ts';
+import { updateCfData } from '../../utils/debug.ts';
 
 export const Login = () => {
     const navigate = useNavigate();
-    const useSystem = useSystemStore()
+    const useSystem = useSystemStore();
     const login_user = (user: IUserAuthData) => {
-        call_auth_user(user).then(
-            (r) => {
-                auth_user(user, r.data);
-                Cookies.set('at', r.data.access_token);
-                Cookies.set('vu', r.data.expires.toString());
-                updateCfData(r, useSystem)
-                window.location.reload();
-            });
-    }
+        call_auth_user(user).then((r) => {
+            auth_user(user, r.data);
+            Cookies.set('at', r.data.access_token);
+            Cookies.set('vu', r.data.expires.toString());
+            updateCfData(r, useSystem);
+            window.location.reload();
+        });
+    };
 
     useEffect(() => {
-        const at = Cookies.get('at')
-        const vu = Cookies.get('vu')
-        if (at && vu){
-            navigate('/')
+        const at = Cookies.get('at');
+        const vu = Cookies.get('vu');
+        if (at && vu) {
+            navigate('/');
         }
     }, []);
-
 
     return (
         <div className={css.login}>
@@ -47,5 +44,5 @@ export const Login = () => {
                 requestAccess={'write'}
             />
         </div>
-    )
-}
+    );
+};

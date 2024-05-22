@@ -1,34 +1,34 @@
-.contentWrapper{
+.contentWrapper {
     margin: 28px 16px;
     width: 100%;
 }
 
-.content{
+.content {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
 }
-.manageableInfo{
+.manageableInfo {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 60%;
 }
 
-.title{
+.title {
     font-weight: 500;
     font-size: large;
 }
 
-.linkedWithContainer{
+.linkedWithContainer {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 40%;
 }
 
-.halfWidthContainer{
+.halfWidthContainer {
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -36,35 +36,35 @@
     overflow-y: scroll;
 }
 
-.rowContainer{
+.rowContainer {
     display: flex;
     flex-direction: row;
     height: 100%;
     overflow: hidden;
 }
 
-.linksTitles{
+.linksTitles {
     display: flex;
     flex-direction: row;
     width: 100%;
 }
 
-.linksTitle{
+.linksTitle {
     width: 50%;
 }
 
-.centeredText{
+.centeredText {
     text-align: center;
 }
 
-.borderBottom{
-    border-bottom: #C2C2C2 1px solid;
+.borderBottom {
+    border-bottom: #c2c2c2 1px solid;
 }
-.borderRight{
-    border-right: #C2C2C2 1px solid;
+.borderRight {
+    border-right: #c2c2c2 1px solid;
 }
 
-.m{
+.m {
     padding-top: 8px;
     padding-bottom: 8px;
     margin-bottom: 8px;

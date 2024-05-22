@@ -1,20 +1,20 @@
-.row{
+.row {
     margin: 8px;
     padding-top: 8px;
     padding-bottom: 8px;
     padding-left: 8px;
 }
 
-.row:nth-child(odd){
+.row:nth-child(odd) {
     background: #f0f4fd;
 }
 
-.row:hover{
+.row:hover {
     background-color: #6f7cd6;
     cursor: pointer;
 }
 
-.link{
+.link {
     text-decoration: none;
     color: inherit;
 }

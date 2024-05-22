@@ -1,10 +1,10 @@
-.departments{
+.departments {
     /*min-height: 320px;*/
 }
 
-.departments_title_container{
+.departments_title_container {
     background: #e3e3e3;
-    border-bottom: 1px solid #C2C2C2;
+    border-bottom: 1px solid #c2c2c2;
     padding: 14px 24px 14px 14px;
     margin-bottom: 8px;
     display: flex;
@@ -12,13 +12,13 @@
     align-items: center;
 }
 
-.departments_list{
+.departments_list {
     display: flex;
     flex-direction: column;
     margin-left: 8px;
     margin-right: 8px;
 }
 
-.departments_title{
+.departments_title {
     font-size: 20px;
 }

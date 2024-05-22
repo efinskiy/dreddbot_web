@@ -1,54 +1,63 @@
-import css from './search-input.module.css'
-import {SetStateAction, useEffect, useState} from "react";
-import {get_users} from "../../api/users.ts";
-import {writeUsers} from "../../stores/users.store.ts";
-import {useSystemStore} from "../../stores/system.store.ts";
-import {updateCfData} from "../../utils/debug.ts";
-import {IUserInSearch} from "../../types/user.ts";
+import css from './search-input.module.css';
+import { SetStateAction, useEffect, useState } from 'react';
+import { get_users } from '../../api/users.ts';
+import { writeUsers } from '../../stores/users.store.ts';
+import { useSystemStore } from '../../stores/system.store.ts';
+import { updateCfData } from '../../utils/debug.ts';
+import { IUserInSearch } from '../../types/user.ts';
 
 export const SearchInputComponent = () => {
-    const [search, setSearch] = useState('')
-    const [selectedFilter, setSelectedFilter] = useState('all')
-    const useSystem = useSystemStore()
-    const [allUsers, setAllUsers] = useState< IUserInSearch[]>([])
+    const [search, setSearch] = useState('');
+    const [selectedFilter, setSelectedFilter] = useState('all');
+    const useSystem = useSystemStore();
+    const [allUsers, setAllUsers] = useState<IUserInSearch[]>([]);
 
     // const usersStore = useUsersStore()
 
     useEffect(() => {
         get_users().then((d) => {
-            updateCfData(d, useSystem)
-            setAllUsers(d.data)
-            writeUsers(d.data)
-        })
+            updateCfData(d, useSystem);
+            setAllUsers(d.data);
+            writeUsers(d.data);
+        });
     }, []);
 
     useEffect(() => {
-        switch (selectedFilter){
+        switch (selectedFilter) {
             case 'all':
-                writeUsers(allUsers.filter(user => user.commentary?.includes(search)))
-                break
+                writeUsers(
+                    allUsers.filter((user) => user.commentary?.includes(search))
+                );
+                break;
             case 'fired':
                 writeUsers(
-                    allUsers.filter(user => user.is_fired)
-                        .filter(user => user.commentary?.includes(search))
-                )
-                break
+                    allUsers
+                        .filter((user) => user.is_fired)
+                        .filter((user) => user.commentary?.includes(search))
+                );
+                break;
             case 'not_confirmed':
-                writeUsers(allUsers.filter(user => !user.is_trusted)
-                    .filter(user => user.commentary?.includes(search))
-                )
-                break
+                writeUsers(
+                    allUsers
+                        .filter((user) => !user.is_trusted)
+                        .filter((user) => user.commentary?.includes(search))
+                );
+                break;
             case 'only_confirmed':
-                writeUsers(allUsers.filter(user => user.is_trusted)
-                    .filter(user => user.commentary?.includes(search))
-                )
-                break
+                writeUsers(
+                    allUsers
+                        .filter((user) => user.is_trusted)
+                        .filter((user) => user.commentary?.includes(search))
+                );
+                break;
         }
     }, [allUsers, search, selectedFilter]);
 
-    const changeRadioValue = (event: { target: { value: SetStateAction<string>; }; }) => {
-        setSelectedFilter(event.target.value)
-    }
+    const changeRadioValue = (event: {
+        target: { value: SetStateAction<string> };
+    }) => {
+        setSelectedFilter(event.target.value);
+    };
 
     return (
         <>
@@ -61,12 +70,13 @@ export const SearchInputComponent = () => {
             />
             <div className={css.filtersContainer}>
                 <div>
-                    <input type="radio"
-                           name='filter'
-                           id='all'
-                           value='all'
-                           checked={selectedFilter == 'all'}
-                           onChange={changeRadioValue}
+                    <input
+                        type="radio"
+                        name="filter"
+                        id="all"
+                        value="all"
+                        checked={selectedFilter == 'all'}
+                        onChange={changeRadioValue}
                     />
                     <label htmlFor="all">Все</label>
                 </div>
@@ -74,9 +84,9 @@ export const SearchInputComponent = () => {
                 <div>
                     <input
                         type="radio"
-                        name='filter'
-                        id='fired'
-                        value='fired'
+                        name="filter"
+                        id="fired"
+                        value="fired"
                         checked={selectedFilter == 'fired'}
                         onChange={changeRadioValue}
                     />
@@ -86,9 +96,9 @@ export const SearchInputComponent = () => {
                 <div>
                     <input
                         type="radio"
-                        name='filter'
-                        id='not_confirmed'
-                        value='not_confirmed'
+                        name="filter"
+                        id="not_confirmed"
+                        value="not_confirmed"
                         checked={selectedFilter == 'not_confirmed'}
                         onChange={changeRadioValue}
                     />
@@ -98,9 +108,9 @@ export const SearchInputComponent = () => {
                 <div>
                     <input
                         type="radio"
-                        name='filter'
-                        id='only_confirmed'
-                        value='only_confirmed'
+                        name="filter"
+                        id="only_confirmed"
+                        value="only_confirmed"
                         checked={selectedFilter == 'only_confirmed'}
                         onChange={changeRadioValue}
                     />
@@ -108,5 +118,5 @@ export const SearchInputComponent = () => {
                 </div>
             </div>
         </>
-    )
-}
+    );
+};

@@ -1,4 +1,4 @@
-.element{
+.element {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,30 +8,28 @@
     /*border: 1px solid black;*/
 }
 
-
-.element:hover{
-    .element_icon{
+.element:hover {
+    .element_icon {
         color: #6f7cd6;
     }
-    .element_title{
+    .element_title {
         text-decoration: underline;
     }
 }
 
-.element_icon{
+.element_icon {
     font-size: 32px !important;
     transition: 0.3s;
     color: #3c9b3c;
 }
 
-.element_title{
+.element_title {
     color: black;
     font-size: smaller;
 }
 
-.link{
+.link {
     color: inherit;
     text-decoration: none;
     outline: none;
 }
-
