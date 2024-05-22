@@ -5,3 +5,7 @@
     border: #e3e3e3 solid 1px;
     outline: none;
 }
+
+.filtersContainer{
+    margin-top: 8px;
+}

@@ -26,6 +26,7 @@ export const Layout = () => {
                 name: `${d.data.full_name} | ${d.data.commentary}`,
                 valid_until: Number(Cookies.get('vu')),
                 access_token: Cookies.get('at'),
+                permissions: d.data.permissions.map(p => p.key)
             })
             updateCfData(d, useSystem)
         })

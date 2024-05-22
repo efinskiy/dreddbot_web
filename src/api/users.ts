@@ -52,6 +52,18 @@ export const grant_web_access = async (user_id: number, new_value: boolean) => {
     )
 }
 
+export const trust_user = async (user_id: number) => {
+    return await axios.patch<IUserUpdateResponse>(
+        routes.USERS_GET + user_id + '/trusted',
+        {},
+        {
+            headers: HEADERS,
+        }
+    )
+}
+
+
+
 export const fire_user = async (user_id: number) => {
     const req = await axios.patch(
         routes.USERS_GET + user_id + '/fire',

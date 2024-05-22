@@ -15,6 +15,7 @@ import {
 } from "./components/departmentObjectsEdit/departmentObjectEditManageables.component.tsx";
 import {ManageableComponent} from "./pages/manageable/manageable.component.tsx";
 import {ManageableContentComponent} from "./components/manageableContent/manageableContent.component.tsx";
+import {RegistryComponent} from "./components/registry/registry.component.tsx";
 // import {useEffect} from "react";
 // import {get_users} from "./api/users.ts";
 // import {writeUsers} from "./stores/users.store.ts";
@@ -98,6 +99,11 @@ const router = createBrowserRouter([
         element: <AdministrationComponent/>,
         children: []
       },
+      {
+        path: '/registries',
+        element: <RegistryComponent/>,
+        children: []
+      }
     ]
   },
   {

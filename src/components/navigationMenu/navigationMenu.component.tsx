@@ -5,6 +5,7 @@ import {useAuthState} from "../../stores/auth.store.ts";
 import {useEffect, useState} from "react";
 import {DebugInfo} from "../debugInfo/debugInfo.component.tsx";
 import {useSystemStore} from "../../stores/system.store.ts";
+import {PermissionRequiredComponent} from "../permissionRequired/permissionRequired.component.tsx";
 
 
 
@@ -33,15 +34,26 @@ export const NavigationMenuComponent = () => {
             <div className={css.menu}>
                 <div className={css.logo}>
                 </div>
-                {<NavigationMenuElementComponent icon={'account_circle'} title={'Пользователи'} link={'/user'}/>}
-                {<NavigationMenuElementComponent icon={'forum'} title={'Чаты'} link={'/manageable'}/>}
-                {<NavigationMenuElementComponent icon={'group'} title={'Отделы'} link={'/department'}/>}
+                <PermissionRequiredComponent permissions={['user.read']}>
+                    {<NavigationMenuElementComponent icon={'account_circle'} title={'Пользователи'} link={'/user'}/>}
+                </PermissionRequiredComponent>
+                <PermissionRequiredComponent permissions={['manageable.read']}>
+                    {<NavigationMenuElementComponent icon={'forum'} title={'Чаты'} link={'/manageable'}/>}
+                </PermissionRequiredComponent>
+                <PermissionRequiredComponent permissions={['department.read']}>
+                    {<NavigationMenuElementComponent icon={'group'} title={'Отделы'} link={'/department'}/>}
+                </PermissionRequiredComponent>
+                <PermissionRequiredComponent permissions={['registry.read']}>
+                    {<NavigationMenuElementComponent icon={'pending_actions'} title={'Реестры'} link={'/registries'}/>}
+                </PermissionRequiredComponent>
                 {/*{<NavigationMenuElementComponent icon={'manage_accounts'} title={}/>}*/}
             </div>
             <div className={css.menu}>
-                <button onClick={() => useSystem.show_debug.set(!useSystem.show_debug.get())}>debug</button>
-                {<NavigationMenuElementComponent icon={'admin_panel_settings'} title={'Администрирование'}
-                                                 link={'/administration'}/>}
+                <PermissionRequiredComponent permissions={['admin.access']}>
+                    <button onClick={() => useSystem.show_debug.set(!useSystem.show_debug.get())}>debug</button>
+                    {<NavigationMenuElementComponent icon={'admin_panel_settings'} title={'Администрирование'}
+                                                     link={'/administration'}/>}
+                </PermissionRequiredComponent>
                 {/*{<NavigationMenuElementComponent icon={'admin_panel_settings'} title={'Я'} link={'/me'}/>}*/}
             </div>
         </div>

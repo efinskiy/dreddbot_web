@@ -1,4 +1,4 @@
-import {IUserAuthData, IUserClear} from "../types/user.ts";
+import {IUserAuthData, IUserClearWithPermissions} from "../types/user.ts";
 import axios from "axios";
 import {HEADERS, routes} from "./routes.ts";
 import {IAuthResponse200} from "../types/auth.ts";
@@ -8,7 +8,7 @@ export const call_auth_user = async (user: IUserAuthData) => {
 }
 
 export const get_me = async () => {
-    return await axios.get<IUserClear>(routes.AUTH_GET_USER, {
+    return await axios.get<IUserClearWithPermissions>(routes.AUTH_GET_USER, {
         headers: HEADERS,
     })
 }

@@ -4,6 +4,7 @@ export interface IAuthData{
     name: string | undefined,
     valid_until: number,
     access_token: string | undefined,
+    permissions: string[]
 }
 
 export interface IAuthResponse200{

@@ -26,4 +26,10 @@ export const routes = {
 
     MANAGEABLES_GET_ALL: `${_BASE_URL}/manageables`,
     MANAGEABLES_GET_ONE: `${_BASE_URL}/manageables/`,
+
+    REGISTRY_ROOT: `${_BASE_URL}/registries`,
+    REGISTRY_GET_ONE: `${_BASE_URL}/registries/get/`,
+    REGISTRY_NEW: `${_BASE_URL}/registries/new`,
+    REGISTRY_UPDATE: `${_BASE_URL}/registries/update`,
+    REGISTRY_DELETE: `${_BASE_URL}/registries/delete/`,
 }

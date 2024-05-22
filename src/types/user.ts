@@ -14,6 +14,8 @@ export interface IUserInSearch {
     id: number
     full_name: string
     commentary: string | undefined
+    is_trusted: boolean
+    is_fired: boolean
 }
 
 export interface IUser{
@@ -43,6 +45,10 @@ export interface IUserClear{
     user_picture: string | undefined
 }
 
+export interface IUserClearWithPermissions extends IUserClear {
+    permissions: Permission[]
+}
+
 export interface IUserUpdateBool {
     value: boolean
 }
@@ -53,4 +59,9 @@ export interface IUserUpdateString {
 
 export interface IUserUpdateResponse{
     status: string
+}
+
+interface Permission {
+    id: number
+    key: string
 }

@@ -15,6 +15,7 @@ export const validate_session = () => {
 const initialState : IAuthData = {
     isLoggedIn: validate_session(),
     user_id: undefined,
+    permissions: [],
     name: undefined,
     valid_until: Number(Cookies.get("vu")),
     access_token: Cookies.get("at"),
@@ -29,6 +30,7 @@ export const auth_user = (user: IUserAuthData, auth_data: IAuthResponse200) => {
         name: user.first_name + user.last_name,
         valid_until: auth_data.expires,
         access_token: auth_data.access_token,
+        permissions: []
     })
 }
 
