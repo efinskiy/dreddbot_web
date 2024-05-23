@@ -3,6 +3,11 @@ import { Registry } from '../../types/registry.ts';
 import css from '../registry/registry.module.css';
 import React from 'react';
 import { DownloadRegistry } from '../../api/registries.ts';
+import {
+    ConfirmButton,
+    DangerButton,
+    YellowButton,
+} from '../popupUI/popup.component.tsx';
 
 interface Props {
     registry: Registry;
@@ -34,18 +39,27 @@ export const RegistryRow = ({
                 {registry.department.name}
             </span>
             <span className={css.table_md_field}>{registry.for_date}</span>
-            <span
-                className={css.table_button_field}
-                onClick={() => downloadRegistry()}
-            >
-                <button>Скачать</button>
-            </span>
-            <span className={css.table_button_field}>
-                <button onClick={() => openUpdatePopup()}>Обновить</button>
-            </span>
-            <span className={css.table_button_field}>
-                <button>Удалить</button>
-            </span>
+            <div className={css.table_button_field}>
+                <ConfirmButton
+                    title={'Скачать'}
+                    onClick={() => downloadRegistry()}
+                    useMargin={false}
+                />
+            </div>
+            <div className={css.table_button_field}>
+                <YellowButton
+                    title={'Обновить'}
+                    onClick={() => openUpdatePopup()}
+                    useMargin={false}
+                />
+            </div>
+            <div className={css.table_button_field}>
+                <DangerButton
+                    title={'Удалить'}
+                    onClick={() => null}
+                    useMargin={false}
+                />
+            </div>
         </div>
     );
 };

@@ -1,7 +1,6 @@
 import Popup from 'reactjs-popup';
 import { useState } from 'react';
-import css from './createDepartmentPopup.module.css';
-import './createDepartmentPopup.module.css';
+import css from '../../popupUI/popup.module.css';
 import { Department } from '../../../types/departments.ts';
 import { CreateDepartment } from '../../../api/departments.ts';
 import { Slide, toast, ToastContainer } from 'react-toastify';
