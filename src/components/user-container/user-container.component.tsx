@@ -1,7 +1,7 @@
 import css from './user-container.module.css';
 import classNames from 'classnames';
 import { Button } from '../buttons/button.component.tsx';
-import { IUser } from '../../types/user.ts';
+import { User } from '../../types/user.ts';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import {
@@ -19,7 +19,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const UserContainerComponent = () => {
     const { id } = useParams();
-    const [user, setUser] = useState<IUser>();
+    const [user, setUser] = useState<User>();
     const useSystem = useSystemStore();
 
     useEffect(() => {

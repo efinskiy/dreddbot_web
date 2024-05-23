@@ -3,14 +3,14 @@ import { get_users } from '../../api/users.ts';
 import { writeUsers } from '../../stores/users.store.ts';
 import { useSystemStore } from '../../stores/system.store.ts';
 import { updateCfData } from '../../utils/debug.ts';
-import { IUserInSearch } from '../../types/user.ts';
+import { UserInSearch } from '../../types/user.ts';
 import css from './search-input.module.css';
 
 export const SearchInputComponent = () => {
     const [search, setSearch] = useState('');
     const [selectedFilter, setSelectedFilter] = useState('all');
     const useSystem = useSystemStore();
-    const [allUsers, setAllUsers] = useState<IUserInSearch[]>([]);
+    const [allUsers, setAllUsers] = useState<UserInSearch[]>([]);
 
     useEffect(() => {
         get_users().then((d) => {

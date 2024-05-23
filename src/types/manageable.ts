@@ -1,7 +1,7 @@
-import { IUserClear } from './user.ts';
-import { IDepartment } from './departments.ts';
+import { UserClear } from './user.ts';
+import { Department } from './departments.ts';
 
-export interface IManageable {
+export interface Manageable {
     id: number;
     telegram_id: number;
     title: string;
@@ -11,7 +11,7 @@ export interface IManageable {
     is_trusted: boolean;
 }
 
-export interface IManageableSaturated {
+export interface ManageableSaturated {
     id: number;
     telegram_id: number;
     title: string;
@@ -19,6 +19,6 @@ export interface IManageableSaturated {
     is_channel: boolean;
     active: boolean;
     is_trusted: boolean;
-    user_ref: IUserClear[];
-    departments: IDepartment[];
+    user_ref: UserClear[];
+    departments: Department[];
 }

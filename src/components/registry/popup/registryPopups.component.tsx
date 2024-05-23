@@ -2,12 +2,12 @@ import Popup from 'reactjs-popup';
 import React from 'react';
 import css from '../../departmentList/createDepartmentPopup/createDepartmentPopup.module.css';
 import { Slide, ToastContainer } from 'react-toastify';
-import { IRegistry } from '../../../types/registry.ts';
+import { Registry } from '../../../types/registry.ts';
 
 interface UpdateProps {
     isOpen: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-    selectedRegistry?: IRegistry;
+    selectedRegistry?: Registry;
 }
 
 export const RegistryUpdatePopup = ({

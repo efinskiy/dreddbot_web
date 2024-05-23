@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { IUserClear } from '../../types/user.ts';
+import { UserClear } from '../../types/user.ts';
 import {
     GetAllUsers,
     GetDepartmentUsers,
@@ -49,14 +49,14 @@ export const DepartmentObjectEditUsersComponent = () => {
         });
     }, []);
 
-    const transformToSelectType = (obj: IUserClear): IUserInSelect => {
+    const transformToSelectType = (obj: UserClear): IUserInSelect => {
         return {
             id: obj.id,
             label: `${obj.full_name} | ${obj.commentary}`,
         };
     };
 
-    const transform = (objs: IUserClear[]): IUserInSelect[] => {
+    const transform = (objs: UserClear[]): IUserInSelect[] => {
         return objs.map(transformToSelectType);
     };
 

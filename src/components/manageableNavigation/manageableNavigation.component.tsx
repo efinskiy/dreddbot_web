@@ -5,13 +5,13 @@ import { useSystemStore } from '../../stores/system.store.ts';
 import { updateCfData } from '../../utils/debug.ts';
 import { useManageablesStore } from '../../stores/manageables.store.ts';
 import { ManageableItemComponent } from '../manageableItem/manageableItem.component.tsx';
-import { IManageable } from '../../types/manageable.ts';
+import { Manageable } from '../../types/manageable.ts';
 
 export const ManageableNavigationComponent = () => {
     const useSystem = useSystemStore();
     const useManageables = useManageablesStore();
     const [filteredManageables, setFilteredManageables] = useState<
-        IManageable[]
+        Manageable[]
     >([]);
     const [filterInput, setFilterInput] = useState<string>('');
 

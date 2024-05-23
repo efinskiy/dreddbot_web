@@ -1,15 +1,15 @@
 import axios from 'axios';
 import { HEADERS, routes } from './routes.ts';
-import { IUser, IUserInSearch, IUserUpdateResponse } from '../types/user.ts';
+import { User, UserInSearch, UserUpdateResponse } from '../types/user.ts';
 
 export const get_users = async () => {
-    return await axios.get<IUserInSearch[]>(routes.USERS_GET, {
+    return await axios.get<UserInSearch[]>(routes.USERS_GET, {
         headers: HEADERS,
     });
 };
 
 export const search_users = async (search: string) => {
-    return await axios.get<IUserInSearch[]>(routes.USER_SEARCH, {
+    return await axios.get<UserInSearch[]>(routes.USER_SEARCH, {
         headers: HEADERS,
         params: {
             q: search,
@@ -18,11 +18,11 @@ export const search_users = async (search: string) => {
 };
 
 export const get_user = async (id: number) => {
-    return await axios.get<IUser>(routes.USER_GET + id, { headers: HEADERS });
+    return await axios.get<User>(routes.USER_GET + id, { headers: HEADERS });
 };
 
 export const update_commentary = async (id: number, commentary: string) => {
-    return await axios.patch<IUserUpdateResponse>(
+    return await axios.patch<UserUpdateResponse>(
         routes.USERS_GET + id + '/update_commentary',
         {
             value: commentary,
@@ -34,7 +34,7 @@ export const update_commentary = async (id: number, commentary: string) => {
 };
 
 export const grant_web_access = async (user_id: number, new_value: boolean) => {
-    return await axios.patch<IUserUpdateResponse>(
+    return await axios.patch<UserUpdateResponse>(
         routes.USERS_GET + user_id + '/grant_web_access',
         {
             value: new_value,
@@ -46,7 +46,7 @@ export const grant_web_access = async (user_id: number, new_value: boolean) => {
 };
 
 export const trust_user = async (user_id: number) => {
-    return await axios.patch<IUserUpdateResponse>(
+    return await axios.patch<UserUpdateResponse>(
         routes.USERS_GET + user_id + '/trusted',
         {},
         {
@@ -67,7 +67,7 @@ export const fire_user = async (user_id: number) => {
 };
 
 export const kick_user = async (user_id: number, chat_id: number) => {
-    return await axios.post<IUserUpdateResponse>(
+    return await axios.post<UserUpdateResponse>(
         routes.USERS_GET + user_id + '/kick',
         {},
         {

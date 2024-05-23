@@ -1,21 +1,21 @@
 import axios from 'axios';
 import { HEADERS, routes } from './routes.ts';
 import {
-    IDepartment,
-    IDepartmentWithManageables,
-    IDepartmentWithUsers,
+    Department,
+    DepartmentWithManageables,
+    DepartmentWithUsers,
 } from '../types/departments.ts';
-import { IUserClear } from '../types/user.ts';
+import { UserClear } from '../types/user.ts';
 import { IDepartmentChanges } from '../components/departmentObjectsEdit/departmentObjectEditUsers.component.tsx';
 
 export const GetAllDepartments = async () => {
-    return await axios.get<IDepartment[]>(routes.DEPARTMENT_GET_CREATE, {
+    return await axios.get<Department[]>(routes.DEPARTMENT_GET_CREATE, {
         headers: HEADERS,
     });
 };
 
 export const CreateDepartment = async (title: string) => {
-    return await axios.post<IDepartment>(
+    return await axios.post<Department>(
         routes.DEPARTMENT_GET_CREATE,
         {
             name: title,
@@ -27,7 +27,7 @@ export const CreateDepartment = async (title: string) => {
 };
 
 export const GetDepartment = async (id: number) => {
-    return await axios.get<IDepartment>(routes.DEPARTMENT_GET_ONE, {
+    return await axios.get<Department>(routes.DEPARTMENT_GET_ONE, {
         headers: HEADERS,
         params: {
             department_id: id,
@@ -36,7 +36,7 @@ export const GetDepartment = async (id: number) => {
 };
 
 export const GetDepartmentUsers = async (id: number) => {
-    return await axios.get<IDepartmentWithUsers>(routes.DEPARTMENT_USERS_GET, {
+    return await axios.get<DepartmentWithUsers>(routes.DEPARTMENT_USERS_GET, {
         headers: HEADERS,
         params: {
             dep_id: id,
@@ -45,7 +45,7 @@ export const GetDepartmentUsers = async (id: number) => {
 };
 
 export const GetDepartmentManageables = async (id: number) => {
-    return await axios.get<IDepartmentWithManageables>(
+    return await axios.get<DepartmentWithManageables>(
         routes.DEPARTMENT_MANAGEABLES_GET,
         {
             headers: HEADERS,
@@ -57,7 +57,7 @@ export const GetDepartmentManageables = async (id: number) => {
 };
 
 export const GetAllUsers = async () => {
-    return await axios.get<IUserClear[]>(routes.USERS_GET_ALL, {
+    return await axios.get<UserClear[]>(routes.USERS_GET_ALL, {
         headers: HEADERS,
     });
 };

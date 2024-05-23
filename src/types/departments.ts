@@ -1,19 +1,19 @@
-import { IUserClear } from './user.ts';
-import { IManageable } from './manageable.ts';
+import { UserClear } from './user.ts';
+import { Manageable } from './manageable.ts';
 
-export interface IDepartment {
+export interface Department {
     id: number;
     name: string;
 }
 
-export interface IDepartmentWithUsers {
+export interface DepartmentWithUsers {
     id: number;
     name: string;
-    users: IUserClear[];
+    users: UserClear[];
 }
 
-export interface IDepartmentWithManageables {
+export interface DepartmentWithManageables {
     id: number;
     name: string;
-    manageables: IManageable[];
+    manageables: Manageable[];
 }

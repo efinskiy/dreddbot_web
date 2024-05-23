@@ -1,14 +1,14 @@
 import classNames from 'classnames';
-import { IRegistry } from '../../types/registry.ts';
+import { Registry } from '../../types/registry.ts';
 import css from '../registry/registry.module.css';
 import React from 'react';
 import { DownloadRegistry } from '../../api/registries.ts';
 
 interface Props {
-    registry: IRegistry;
+    registry: Registry;
     updatePopupOpen: React.Dispatch<React.SetStateAction<boolean>>;
     updatePopupRegistry: React.Dispatch<
-        React.SetStateAction<IRegistry | undefined>
+        React.SetStateAction<Registry | undefined>
     >;
 }
 

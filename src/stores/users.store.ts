@@ -1,9 +1,9 @@
 import { hookstate, useHookstate } from '@hookstate/core';
-import { IUserInSearch } from '../types/user.ts';
+import { UserInSearch } from '../types/user.ts';
 
-const usersStore = hookstate<IUserInSearch[]>([]);
+const usersStore = hookstate<UserInSearch[]>([]);
 
-export const writeUsers = (users: IUserInSearch[]) => {
+export const writeUsers = (users: UserInSearch[]) => {
     usersStore.set(users);
 };
 

@@ -1,6 +1,6 @@
 import { hookstate, useHookstate } from '@hookstate/core';
-import { IUserAuthData } from '../types/user.ts';
-import { IAuthData, IAuthResponse200 } from '../types/auth.ts';
+import { UserAuthData } from '../types/user.ts';
+import { AuthData, AuthResponse200 } from '../types/auth.ts';
 import Cookies from 'js-cookie';
 
 export const validate_session = () => {
@@ -12,7 +12,7 @@ export const validate_session = () => {
     return vu - Math.round(Date.now() / 1000) > 0;
 };
 
-const initialState: IAuthData = {
+const initialState: AuthData = {
     isLoggedIn: validate_session(),
     user_id: undefined,
     permissions: [],
@@ -23,7 +23,7 @@ const initialState: IAuthData = {
 
 const authState = hookstate(initialState);
 
-export const auth_user = (user: IUserAuthData, auth_data: IAuthResponse200) => {
+export const auth_user = (user: UserAuthData, auth_data: AuthResponse200) => {
     authState.set({
         isLoggedIn: true,
         user_id: user.id,

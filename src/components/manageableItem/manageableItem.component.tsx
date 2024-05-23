@@ -1,9 +1,9 @@
-import { IManageable } from '../../types/manageable.ts';
+import { Manageable } from '../../types/manageable.ts';
 import { Link } from 'react-router-dom';
 import css from './manageableItem.module.css';
 
 interface IManageableItemComponent {
-    manageable: IManageable;
+    manageable: Manageable;
 }
 
 export const ManageableItemComponent = ({

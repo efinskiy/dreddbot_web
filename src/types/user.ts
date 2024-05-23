@@ -1,6 +1,6 @@
-import { IManageable } from './manageable.ts';
+import { Manageable } from './manageable.ts';
 
-export interface IUserAuthData {
+export interface UserAuthData {
     auth_date: number;
     first_name: string;
     last_name?: string | undefined;
@@ -10,7 +10,7 @@ export interface IUserAuthData {
     username?: string | undefined;
 }
 
-export interface IUserInSearch {
+export interface UserInSearch {
     id: number;
     full_name: string;
     commentary: string | undefined;
@@ -18,7 +18,7 @@ export interface IUserInSearch {
     is_fired: boolean;
 }
 
-export interface IUser {
+export interface User {
     id: number;
     telegram_id: number;
     telegram_username: string | undefined;
@@ -29,10 +29,10 @@ export interface IUser {
     is_fired: boolean;
     commentary: string | undefined;
     user_picture: string | undefined;
-    manageable_ref: IManageable[];
+    manageable_ref: Manageable[];
 }
 
-export interface IUserClear {
+export interface UserClear {
     id: number;
     telegram_id: number;
     telegram_username: string | undefined;
@@ -45,19 +45,19 @@ export interface IUserClear {
     user_picture: string | undefined;
 }
 
-export interface IUserClearWithPermissions extends IUserClear {
+export interface UserClearWithPermissions extends UserClear {
     permissions: Permission[];
 }
 
-export interface IUserUpdateBool {
+export interface UserUpdateBool {
     value: boolean;
 }
 
-export interface IUserUpdateString {
+export interface UserUpdateString {
     value: string;
 }
 
-export interface IUserUpdateResponse {
+export interface UserUpdateResponse {
     status: string;
 }
 
