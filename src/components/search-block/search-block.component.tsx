@@ -1,5 +1,5 @@
-import css from './search-block.module.css';
 import { SearchInputComponent } from '../search-input/search-input.component.tsx';
+import css from './search-block.module.css';
 
 export const SearchBlockComponent = () => {
     return (

@@ -4,7 +4,6 @@ import { IDepartment } from '../../types/departments.ts';
 import { GetAllDepartments } from '../../api/departments.ts';
 import { DepartmentListElementComponent } from '../departmentListElement/departmentListElement.component.tsx';
 import { Button } from '../buttons/button.component.tsx';
-import { useNavigate } from 'react-router-dom';
 import { useSystemStore } from '../../stores/system.store.ts';
 import { updateCfData } from '../../utils/debug.ts';
 
@@ -12,7 +11,6 @@ import { CreateDepartmentPopup } from './createDepartmentPopup/createDepartmentP
 
 export const DepartmentListComponent = () => {
     const [departments, setDepartments] = useState<IDepartment[]>([]);
-    const navigate = useNavigate();
     const useSystem = useSystemStore();
     const [popupOpen, setPopupOpen] = useState<boolean>(false);
 

@@ -1,6 +1,3 @@
-import css from './layout.module.css';
-// import {Outlet} from "react-router-dom";
-// import {NavigationComponent} from "../../components/navigation/navigation.component.tsx";
 import { logout_user, useAuthState } from '../../stores/auth.store.ts';
 import { Outlet, redirect, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -9,6 +6,7 @@ import { NavigationMenuComponent } from '../../components/navigationMenu/navigat
 import { get_me } from '../../api/auth.ts';
 import { updateCfData } from '../../utils/debug.ts';
 import { useSystemStore } from '../../stores/system.store.ts';
+import css from './layout.module.css';
 
 export const Layout = () => {
     const authState = useAuthState();

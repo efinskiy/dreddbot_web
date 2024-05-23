@@ -1,6 +1,6 @@
 import { IManageable } from '../../types/manageable.ts';
-import css from './departmentInfoDataListElement.module.css';
 import { Link } from 'react-router-dom';
+import css from './departmentInfoDataListElement.module.css';
 
 interface DepartmentInfoDataListManageableElement {
     obj: IManageable;

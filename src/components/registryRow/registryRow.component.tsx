@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-import css from '../registry/registry.module.css';
 import { IRegistry } from '../../types/registry.ts';
+import css from '../registry/registry.module.css';
 
 interface Props {
     registry: IRegistry;

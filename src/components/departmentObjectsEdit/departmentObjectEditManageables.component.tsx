@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import MultiSelect from '@kenshooui/react-multi-select';
 import css from './departmentObjectEdit.module.css';
@@ -64,7 +65,6 @@ export const DepartmentObjectEditManageablesComponent = () => {
             manageableInSelectSelectedInitial,
             manageableInSelectSelected
         );
-        // console.log(data)
         UpdateDepartmentManageables(Number(id), data).then((d) => {
             updateCfData(d, useSystem);
             d.status === 200 ? alert('Обновлено') : alert('Ошибка.');

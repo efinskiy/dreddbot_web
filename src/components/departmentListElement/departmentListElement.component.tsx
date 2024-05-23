@@ -1,6 +1,6 @@
 import { IDepartment } from '../../types/departments.ts';
-import css from './departmentListElement.module.css';
 import { Link } from 'react-router-dom';
+import css from './departmentListElement.module.css';
 
 interface IDepartmentListElementProps {
     department: IDepartment;
