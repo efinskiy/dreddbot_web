@@ -1,18 +1,16 @@
-import css from './search-input.module.css';
 import { SetStateAction, useEffect, useState } from 'react';
 import { get_users } from '../../api/users.ts';
 import { writeUsers } from '../../stores/users.store.ts';
 import { useSystemStore } from '../../stores/system.store.ts';
 import { updateCfData } from '../../utils/debug.ts';
 import { IUserInSearch } from '../../types/user.ts';
+import css from './search-input.module.css';
 
 export const SearchInputComponent = () => {
     const [search, setSearch] = useState('');
     const [selectedFilter, setSelectedFilter] = useState('all');
     const useSystem = useSystemStore();
     const [allUsers, setAllUsers] = useState<IUserInSearch[]>([]);
-
-    // const usersStore = useUsersStore()
 
     useEffect(() => {
         get_users().then((d) => {

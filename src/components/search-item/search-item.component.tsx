@@ -1,5 +1,5 @@
-import css from './search-item.module.css';
 import { Link } from 'react-router-dom';
+import css from './search-item.module.css';
 
 export interface ISearchItemComponent {
     id: number;

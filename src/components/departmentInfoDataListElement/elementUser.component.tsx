@@ -1,6 +1,6 @@
 import { IUserClear } from '../../types/user.ts';
-import css from './departmentInfoDataListElement.module.css';
 import { Link } from 'react-router-dom';
+import css from './departmentInfoDataListElement.module.css';
 
 interface DepartmentInfoDataListUserElement {
     obj: IUserClear;

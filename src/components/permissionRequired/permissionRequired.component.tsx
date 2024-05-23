@@ -27,5 +27,4 @@ export const PermissionRequiredComponent = ({
     } else {
         return null;
     }
-    // return children
 };
