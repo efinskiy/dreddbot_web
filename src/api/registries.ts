@@ -7,3 +7,12 @@ export const GetAllRegistries = async () => {
         headers: HEADERS,
     });
 };
+
+export const DownloadRegistry = async (id: number) => {
+    return await axios
+        .get(routes.REGISTRY_GET_ONE + id, {
+            headers: HEADERS,
+            responseType: 'blob',
+        })
+        .then(() => window.open(routes.REGISTRY_GET_ONE + id));
+};

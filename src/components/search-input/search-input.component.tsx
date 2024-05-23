@@ -24,7 +24,12 @@ export const SearchInputComponent = () => {
         switch (selectedFilter) {
             case 'all':
                 writeUsers(
-                    allUsers.filter((user) => user.commentary?.includes(search))
+                    allUsers.filter((user) =>
+                        search
+                            ? user.commentary?.includes(search) ||
+                              user.full_name.includes(search)
+                            : user
+                    )
                 );
                 break;
             case 'fired':
