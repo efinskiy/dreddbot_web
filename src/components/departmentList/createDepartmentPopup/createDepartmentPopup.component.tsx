@@ -1,5 +1,5 @@
 import Popup from 'reactjs-popup';
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import css from './createDepartmentPopup.module.css';
 import './createDepartmentPopup.module.css';
 import { IDepartment } from '../../../types/departments.ts';
@@ -8,8 +8,7 @@ import { Slide, toast, ToastContainer } from 'react-toastify';
 
 interface PopupProps {
     isOpen: boolean;
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-    setDepartments: Dispatch<SetStateAction<IDepartment[]>>;
+    setDepartments: (department: IDepartment[]) => void;
     departments: IDepartment[];
     setOpen: (x: boolean) => void;
 }
@@ -22,6 +21,7 @@ export const CreateDepartmentPopup = ({
 }: PopupProps) => {
     const [newDepartmentTitle, setNewDepartmentTitle] = useState<string>('');
 
+    const onClose = () => setOpen(false);
     const sendRequest = async () => {
         CreateDepartment(newDepartmentTitle)
             .then((res) => {
@@ -55,11 +55,7 @@ export const CreateDepartmentPopup = ({
     };
 
     return (
-        <Popup
-            open={isOpen}
-            closeOnDocumentClick
-            onClose={() => setOpen(false)}
-        >
+        <Popup open={isOpen} closeOnDocumentClick onClose={onClose}>
             <ToastContainer
                 position="top-right"
                 autoClose={5000}
