@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { IManageableSaturated } from '../../types/manageable.ts';
+import { ManageableSaturated } from '../../types/manageable.ts';
 import { GetOneManageable } from '../../api/manageables.ts';
 import { useSystemStore } from '../../stores/system.store.ts';
 import { updateCfData } from '../../utils/debug.ts';
@@ -12,7 +12,7 @@ import { ManageableLink } from '../manageableLink/manageableLink.component.tsx';
 export const ManageableContentComponent = () => {
     const { id } = useParams();
     const useSystem = useSystemStore();
-    const [manageable, setManageable] = useState<IManageableSaturated | null>(
+    const [manageable, setManageable] = useState<ManageableSaturated | null>(
         null
     );
 

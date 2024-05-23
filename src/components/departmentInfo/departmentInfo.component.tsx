@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { IUserClear } from '../../types/user.ts';
-import { IManageable } from '../../types/manageable.ts';
-import { IDepartment } from '../../types/departments.ts';
+import { UserClear } from '../../types/user.ts';
+import { Manageable } from '../../types/manageable.ts';
+import { Department } from '../../types/departments.ts';
 import {
     GetDepartment,
     GetDepartmentManageables,
@@ -16,9 +16,9 @@ import { updateCfData } from '../../utils/debug.ts';
 
 export const DepartmentInfoComponent = () => {
     const { id } = useParams();
-    const [department, setDepartment] = useState<IDepartment | null>(null);
-    const [users, setUsers] = useState<IUserClear[]>([]);
-    const [manageables, setManageables] = useState<IManageable[]>([]);
+    const [department, setDepartment] = useState<Department | null>(null);
+    const [users, setUsers] = useState<UserClear[]>([]);
+    const [manageables, setManageables] = useState<Manageable[]>([]);
     const useSystem = useSystemStore();
 
     useEffect(() => {

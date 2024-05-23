@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import MultiSelect from '@kenshooui/react-multi-select';
 import css from './departmentObjectEdit.module.css';
 import '@kenshooui/react-multi-select/dist/style.css';
-import { IManageable } from '../../types/manageable.ts';
+import { Manageable } from '../../types/manageable.ts';
 import {
     GetDepartmentManageables,
     UpdateDepartmentManageables,
@@ -49,14 +49,14 @@ export const DepartmentObjectEditManageablesComponent = () => {
         });
     }, []);
 
-    const transformToSelectType = (obj: IManageable): IManageableInSelect => {
+    const transformToSelectType = (obj: Manageable): IManageableInSelect => {
         return {
             id: obj.id,
             label: obj.title,
         };
     };
 
-    const transform = (objs: IManageable[]): IManageableInSelect[] => {
+    const transform = (objs: Manageable[]): IManageableInSelect[] => {
         return objs.map(transformToSelectType);
     };
 

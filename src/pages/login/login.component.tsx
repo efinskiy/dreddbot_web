@@ -1,5 +1,5 @@
 import { TLoginButton, TLoginButtonSize } from 'react-telegram-auth';
-import { IUserAuthData } from '../../types/user.ts';
+import { UserAuthData } from '../../types/user.ts';
 import { call_auth_user } from '../../api/auth.ts';
 import { auth_user } from '../../stores/auth.store.ts';
 import Cookies from 'js-cookie';
@@ -12,7 +12,7 @@ import { updateCfData } from '../../utils/debug.ts';
 export const Login = () => {
     const navigate = useNavigate();
     const useSystem = useSystemStore();
-    const login_user = (user: IUserAuthData) => {
+    const login_user = (user: UserAuthData) => {
         call_auth_user(user).then((r) => {
             auth_user(user, r.data);
             Cookies.set('at', r.data.access_token);
@@ -40,7 +40,7 @@ export const Login = () => {
                 lang="ru"
                 usePic={true}
                 cornerRadius={20}
-                onAuthCallback={(user: IUserAuthData) => login_user(user)}
+                onAuthCallback={(user: UserAuthData) => login_user(user)}
                 requestAccess={'write'}
             />
         </div>

@@ -1,12 +1,12 @@
-import { IDepartment } from './departments.ts';
-import { IUserClear } from './user.ts';
+import { Department } from './departments.ts';
+import { UserClear } from './user.ts';
 
-export interface IRegistry {
+export interface Registry {
     id: number;
     name: string;
     created_at: string;
     updated_at: string;
     for_date: string;
-    department: IDepartment;
-    user: IUserClear;
+    department: Department;
+    user: UserClear;
 }

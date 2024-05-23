@@ -1,7 +1,7 @@
 import css from './registry.module.css';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
-import { IRegistry } from '../../types/registry.ts';
+import { Registry } from '../../types/registry.ts';
 import { GetAllRegistries } from '../../api/registries.ts';
 import { useSystemStore } from '../../stores/system.store.ts';
 import { updateCfData } from '../../utils/debug.ts';
@@ -26,11 +26,11 @@ const RegistryRowHeader = () => {
 };
 
 export const RegistryComponent = () => {
-    const [registries, setRegistries] = useState<IRegistry[]>([]);
+    const [registries, setRegistries] = useState<Registry[]>([]);
     const useSystem = useSystemStore();
     const [updatePopupOpen, setUpdatePopupOpen] = useState<boolean>(false);
     const [updatePopupRegistry, setUpdatePopupRegistry] = useState<
-        IRegistry | undefined
+        Registry | undefined
     >();
 
     const [deletePopupOpen, setDeletePopupOpen] = useState<boolean>(false);

@@ -1,12 +1,12 @@
 import { hookstate, useHookstate } from '@hookstate/core';
-import { IManageable } from '../types/manageable.ts';
+import { Manageable } from '../types/manageable.ts';
 
-const manageablesStore = hookstate<IManageable[]>([]);
+const manageablesStore = hookstate<Manageable[]>([]);
 
 export const useManageablesStore = () => {
     return useHookstate(manageablesStore);
 };
 
-export const setManageables = (manageables: IManageable[]) => {
+export const setManageables = (manageables: Manageable[]) => {
     manageablesStore.set(manageables);
 };

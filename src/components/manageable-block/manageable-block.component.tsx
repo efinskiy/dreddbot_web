@@ -1,4 +1,4 @@
-import { IManageable } from '../../types/manageable.ts';
+import { Manageable } from '../../types/manageable.ts';
 import { Button } from '../buttons/button.component.tsx';
 import { kick_user } from '../../api/users.ts';
 import { useSystemStore } from '../../stores/system.store.ts';
@@ -6,7 +6,7 @@ import { updateCfData } from '../../utils/debug.ts';
 import css from './manageable-block.module.css';
 
 export interface IManageableBlockComponent {
-    manageable: IManageable;
+    manageable: Manageable;
     user_id: number;
 }
 

@@ -1,4 +1,4 @@
-export interface IAuthData {
+export interface AuthData {
     isLoggedIn: boolean;
     user_id: number | undefined;
     name: string | undefined;
@@ -7,7 +7,7 @@ export interface IAuthData {
     permissions: string[];
 }
 
-export interface IAuthResponse200 {
+export interface AuthResponse200 {
     access_token: string;
     expires: number;
 }

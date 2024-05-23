@@ -1,7 +1,7 @@
 import css from './departmentInfoDataList.module.css';
 import { Button } from '../buttons/button.component.tsx';
-import { IUserClear } from '../../types/user.ts';
-import { IManageable } from '../../types/manageable.ts';
+import { UserClear } from '../../types/user.ts';
+import { Manageable } from '../../types/manageable.ts';
 import { DepartmentInfoDataListManageableElement } from '../departmentInfoDataListElement/elementManageable.component.tsx';
 import { DepartmentInfoDataListUserElement } from '../departmentInfoDataListElement/elementUser.component.tsx';
 import { useNavigate } from 'react-router-dom';
@@ -10,8 +10,8 @@ interface IDepartmentInfoDataListProps {
     title: string;
     dep_id: number;
     type: string;
-    users?: IUserClear[];
-    manageables?: IManageable[];
+    users?: UserClear[];
+    manageables?: Manageable[];
 }
 
 export const DepartmentInfoDataListComponent = ({
@@ -35,11 +35,11 @@ export const DepartmentInfoDataListComponent = ({
             </div>
             <div className={css.elements}>
                 {type === 'users' ? (
-                    users?.map((o: IUserClear) => (
+                    users?.map((o: UserClear) => (
                         <DepartmentInfoDataListUserElement obj={o} key={o.id} />
                     ))
                 ) : type === 'manageables' ? (
-                    manageables?.map((o: IManageable) => (
+                    manageables?.map((o: Manageable) => (
                         <DepartmentInfoDataListManageableElement
                             obj={o}
                             key={o.id}

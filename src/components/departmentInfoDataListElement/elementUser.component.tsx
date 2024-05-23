@@ -1,9 +1,9 @@
-import { IUserClear } from '../../types/user.ts';
+import { UserClear } from '../../types/user.ts';
 import { Link } from 'react-router-dom';
 import css from './departmentInfoDataListElement.module.css';
 
 interface DepartmentInfoDataListUserElement {
-    obj: IUserClear;
+    obj: UserClear;
 }
 
 export const DepartmentInfoDataListUserElement = ({

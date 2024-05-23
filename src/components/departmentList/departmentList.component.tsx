@@ -1,6 +1,6 @@
 import css from './departmentList.module.css';
 import { useEffect, useState } from 'react';
-import { IDepartment } from '../../types/departments.ts';
+import { Department } from '../../types/departments.ts';
 import { GetAllDepartments } from '../../api/departments.ts';
 import { DepartmentListElementComponent } from '../departmentListElement/departmentListElement.component.tsx';
 import { Button } from '../buttons/button.component.tsx';
@@ -10,7 +10,7 @@ import { updateCfData } from '../../utils/debug.ts';
 import { CreateDepartmentPopup } from './createDepartmentPopup/createDepartmentPopup.component.tsx';
 
 export const DepartmentListComponent = () => {
-    const [departments, setDepartments] = useState<IDepartment[]>([]);
+    const [departments, setDepartments] = useState<Department[]>([]);
     const useSystem = useSystemStore();
     const [popupOpen, setPopupOpen] = useState(false);
 
@@ -37,7 +37,7 @@ export const DepartmentListComponent = () => {
                 />
             </div>
             <div className={css.departments_list}>
-                {departments.map((department: IDepartment) => (
+                {departments.map((department: Department) => (
                     <>
                         <DepartmentListElementComponent
                             department={department}

@@ -2,14 +2,14 @@ import Popup from 'reactjs-popup';
 import { useState } from 'react';
 import css from './createDepartmentPopup.module.css';
 import './createDepartmentPopup.module.css';
-import { IDepartment } from '../../../types/departments.ts';
+import { Department } from '../../../types/departments.ts';
 import { CreateDepartment } from '../../../api/departments.ts';
 import { Slide, toast, ToastContainer } from 'react-toastify';
 
 interface PopupProps {
     isOpen: boolean;
-    setDepartments: (department: IDepartment[]) => void;
-    departments: IDepartment[];
+    setDepartments: (department: Department[]) => void;
+    departments: Department[];
     setOpen: (x: boolean) => void;
 }
 

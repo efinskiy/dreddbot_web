@@ -1,9 +1,9 @@
-import { IDepartment } from '../../types/departments.ts';
+import { Department } from '../../types/departments.ts';
 import { Link } from 'react-router-dom';
 import css from './departmentListElement.module.css';
 
 interface IDepartmentListElementProps {
-    department: IDepartment;
+    department: Department;
 }
 
 export const DepartmentListElementComponent = ({
