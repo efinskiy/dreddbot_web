@@ -18,7 +18,7 @@ export const RegistryUpdatePopup = ({
     if (!selectedRegistry) {
         return null;
     }
-    const today = new Date(Date.now());
+    // const today = new Date(Date.now());
     return (
         <Popup
             open={isOpen}

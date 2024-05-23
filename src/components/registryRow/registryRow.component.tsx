@@ -3,6 +3,7 @@ import { Registry } from '../../types/registry.ts';
 import css from '../registry/registry.module.css';
 import React from 'react';
 import { DownloadRegistry } from '../../api/registries.ts';
+import { Button } from '../buttons/button.component.tsx';
 
 interface Props {
     registry: Registry;
@@ -23,7 +24,7 @@ export const RegistryRow = ({
     };
 
     const downloadRegistry = () => {
-        DownloadRegistry(registry.id).then(() => {});
+        DownloadRegistry(registry.id, registry.name);
     };
 
     return (
@@ -34,17 +35,14 @@ export const RegistryRow = ({
                 {registry.department.name}
             </span>
             <span className={css.table_md_field}>{registry.for_date}</span>
-            <span
-                className={css.table_button_field}
-                onClick={() => downloadRegistry()}
-            >
-                <button>Скачать</button>
+            <span className={css.table_button_field}>
+                <Button title={'Скачать'} onClick={() => downloadRegistry()} />
             </span>
             <span className={css.table_button_field}>
-                <button onClick={() => openUpdatePopup()}>Обновить</button>
+                <Button title={'Обновить'} onClick={() => openUpdatePopup()} />
             </span>
             <span className={css.table_button_field}>
-                <button>Удалить</button>
+                <Button title={'Удалить'} />
             </span>
         </div>
     );
