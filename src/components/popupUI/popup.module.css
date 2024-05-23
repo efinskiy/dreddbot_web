@@ -4,6 +4,7 @@
     border-radius: 5px 5px 0 0;
     border: 1px solid #c2c2c2;
     padding: 16px 8px;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3)
 }
 
 .header {
@@ -58,13 +59,38 @@
     flex-direction: row-reverse;
 }
 
-.confirm_button {
+.button {
     border: none;
-    border-bottom: 1px solid #3c9b3c;
     cursor: pointer;
     padding: 8px 16px 8px 16px;
 }
 
+.button_margin {
+    margin-left: 12px;
+}
+
+.confirm_button {
+    border-bottom: 1px solid #3c9b3c;
+}
+
 .confirm_button:hover {
     background-color: #3c9b3c;
+}
+
+
+.yellow_button {
+    border-bottom: 1px solid #eae208;
+}
+
+.yellow_button:hover {
+    background-color: #eae208;
+}
+
+.danger_button {
+    border-bottom: 1px solid #dc0606;
+}
+
+.danger_button:hover {
+    background-color: #dc0606;
+    color: #fff;
 }
