@@ -1,6 +1,6 @@
 import Popup from 'reactjs-popup';
 import React from 'react';
-import css from '../../departmentList/createDepartmentPopup/createDepartmentPopup.module.css';
+import css from '../../popupUI/popup.module.css';
 import { Slide, ToastContainer } from 'react-toastify';
 import { Registry } from '../../../types/registry.ts';
 
@@ -64,6 +64,9 @@ export const RegistryUpdatePopup = ({
                     <div className={css.field}>
                         <span className={css.info_field_item}>Excel файл:</span>
                         <input type="file" />
+                    </div>
+                    <div className={css.control_block}>
+                        <button className={css.confirm_button}>Обновить</button>
                     </div>
                 </div>
             </div>
