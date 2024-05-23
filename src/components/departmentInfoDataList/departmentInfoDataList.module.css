@@ -21,9 +21,13 @@
     align-items: center;
     justify-content: space-between;
     padding-right: 8px;
+    position: fixed;
+    width: calc(50% - 110px);
+    background: #fafafa;
 }
 
 .elements {
     display: flex;
     flex-direction: column;
+    margin-top: 46px;
 }

@@ -12,14 +12,14 @@ import { CreateDepartmentPopup } from './createDepartmentPopup/createDepartmentP
 export const DepartmentListComponent = () => {
     const [departments, setDepartments] = useState<IDepartment[]>([]);
     const useSystem = useSystemStore();
-    const [popupOpen, setPopupOpen] = useState<boolean>(false);
+    const [popupOpen, setPopupOpen] = useState(false);
 
     useEffect(() => {
         GetAllDepartments().then((res) => {
             setDepartments(res.data);
             updateCfData(res, useSystem);
         });
-    }, []);
+    }, [useSystem]);
 
     return (
         <div className={css.departments}>
@@ -29,7 +29,7 @@ export const DepartmentListComponent = () => {
                 <Button
                     title={'Создать'}
                     onClick={() => setPopupOpen((o) => !o)}
-                ></Button>
+                />
             </div>
             <div className={css.departments_list}>
                 {departments.map((department: IDepartment) => (

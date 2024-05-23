@@ -43,6 +43,8 @@
 
 .control_block {
     margin-top: 16px;
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 .confirm_button {

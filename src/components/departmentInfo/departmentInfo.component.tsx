@@ -27,14 +27,19 @@ export const DepartmentInfoComponent = () => {
             updateCfData(d, useSystem);
         });
         GetDepartmentUsers(Number(id)).then((d) => {
-            setUsers(d.data.users);
+            setUsers(
+                d.data.users.map((el) => ({
+                    ...el,
+                    full_name: el.full_name?.split(' None')[0],
+                }))
+            );
             updateCfData(d, useSystem);
         });
         GetDepartmentManageables(Number(id)).then((d) => {
             setManageables(d.data.manageables);
             updateCfData(d, useSystem);
         });
-    }, [id]);
+    }, [id, useSystem]);
 
     return (
         <div className={css.departmentInfo}>

@@ -36,11 +36,14 @@ export const DepartmentInfoDataListComponent = ({
             <div className={css.elements}>
                 {type === 'users' ? (
                     users?.map((o: IUserClear) => (
-                        <DepartmentInfoDataListUserElement obj={o} />
+                        <DepartmentInfoDataListUserElement obj={o} key={o.id} />
                     ))
                 ) : type === 'manageables' ? (
                     manageables?.map((o: IManageable) => (
-                        <DepartmentInfoDataListManageableElement obj={o} />
+                        <DepartmentInfoDataListManageableElement
+                            obj={o}
+                            key={o.id}
+                        />
                     ))
                 ) : (
                     <></>
