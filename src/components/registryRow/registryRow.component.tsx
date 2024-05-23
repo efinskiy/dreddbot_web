@@ -8,7 +8,6 @@ import {
     DangerButton,
     YellowButton,
 } from '../popupUI/popup.component.tsx';
-import { Button } from '../buttons/button.component.tsx';
 
 interface Props {
     registry: Registry;
