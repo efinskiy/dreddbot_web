@@ -3,6 +3,14 @@ import React from 'react';
 import css from '../../popupUI/popup.module.css';
 import { Slide, ToastContainer } from 'react-toastify';
 import { Registry } from '../../../types/registry.ts';
+import {
+    ConfirmButton,
+    PopupBody,
+    PopupContent,
+    PopupField,
+    PopupFooter,
+    PopupHeader,
+} from '../../popupUI/popup.component.tsx';
 
 interface UpdateProps {
     isOpen: boolean;
@@ -18,7 +26,7 @@ export const RegistryUpdatePopup = ({
     if (!selectedRegistry) {
         return null;
     }
-    const today = new Date(Date.now());
+    // const today = new Date(Date.now());
     return (
         <Popup
             open={isOpen}
@@ -38,38 +46,30 @@ export const RegistryUpdatePopup = ({
                 theme="light"
                 transition={Slide}
             />
-            <div className={css.popup}>
-                <div className={css.header}>
-                    <h3>Обновить реестр: {selectedRegistry?.name}</h3>
-                    <a className={css.close} onClick={() => setOpen(false)}>
-                        &#10005;
-                    </a>
-                </div>
-                <div className={css.content}>
-                    <div className={css.field}>
+
+            <PopupBody>
+                <PopupHeader
+                    title={`Обновить реестр: ${selectedRegistry?.name}`}
+                    setOpen={setOpen}
+                />
+                <PopupContent>
+                    <PopupField>
                         <span className={css.info_field_item}>Дата:</span>
-                        <input
-                            type="date"
-                            // min={
-                            //     String(today.getFullYear()) +
-                            //     '-' +
-                            //     (String(today.getUTCMonth() + 1).length == 2
-                            //         ? String(today.getUTCMonth() + 1)
-                            //         : String(today.getUTCMonth() + 1)) +
-                            //     '-' +
-                            //     String(today.getDate())
-                            // }
-                        />
-                    </div>
-                    <div className={css.field}>
+                        <input type="date" />
+                    </PopupField>
+                    <PopupField>
                         <span className={css.info_field_item}>Excel файл:</span>
                         <input type="file" />
-                    </div>
-                    <div className={css.control_block}>
-                        <button className={css.confirm_button}>Обновить</button>
-                    </div>
-                </div>
-            </div>
+                    </PopupField>
+                    <PopupFooter>
+                        <ConfirmButton
+                            title={'Обновить'}
+                            useMargin={true}
+                            onClick={() => console.log('asdad')}
+                        />
+                    </PopupFooter>
+                </PopupContent>
+            </PopupBody>
         </Popup>
     );
 };
