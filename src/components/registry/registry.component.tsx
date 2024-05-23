@@ -7,6 +7,7 @@ import { useSystemStore } from '../../stores/system.store.ts';
 import { updateCfData } from '../../utils/debug.ts';
 import { RegistryRow } from '../registryRow/registryRow.component.tsx';
 import {
+    RegistryNewPopup,
     // RegistryDeleteConfirmPopup,
     RegistryUpdatePopup,
 } from './popup/registryPopups.component.tsx';
@@ -32,6 +33,8 @@ export const RegistryComponent = () => {
     const [updatePopupRegistry, setUpdatePopupRegistry] = useState<
         Registry | undefined
     >();
+    const [newRegistryPopupOpen, setNewRegistryPopupOpen] =
+        useState<boolean>(false);
 
     // const [deletePopupOpen, setDeletePopupOpen] = useState<boolean>(false);
 
@@ -49,11 +52,20 @@ export const RegistryComponent = () => {
                 setOpen={setUpdatePopupOpen}
                 selectedRegistry={updatePopupRegistry}
             />
+            <RegistryNewPopup
+                isOpen={newRegistryPopupOpen}
+                setOpen={setNewRegistryPopupOpen}
+            />
             {/*<RegistryDeleteConfirmPopup />*/}
             <div className={css.component}>
                 <div className={css.navigation}>
                     <h3 className={css.navigation_title}>Реестры.</h3>
-                    <button className={css.create_button}>Создать</button>
+                    <button
+                        className={css.create_button}
+                        onClick={() => setNewRegistryPopupOpen(true)}
+                    >
+                        Создать
+                    </button>
                 </div>
 
                 <div className={css.registries_table}>

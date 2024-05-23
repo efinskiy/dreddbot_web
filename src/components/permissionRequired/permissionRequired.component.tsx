@@ -20,7 +20,6 @@ export const PermissionRequiredComponent = ({
         ) {
             setAccessGranted(true);
         }
-        console.log(accessGranted);
     }, [useAuth]);
     if (accessGranted) {
         return children;

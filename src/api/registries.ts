@@ -29,3 +29,14 @@ export const DownloadRegistry = async (id: number, name: string) => {
     document.body.removeChild(link);
     URL.revokeObjectURL(downloadUrl);
 };
+
+export const UpdateRegistry = async (id: number, date: string, file: File) => {
+    const bodyFormData = new FormData();
+    bodyFormData.append('registry_id', id.toString());
+    bodyFormData.append('file', file);
+    bodyFormData.append('date', date);
+
+    return await axios.post(routes.REGISTRY_UPDATE, bodyFormData, {
+        headers: { ...HEADERS, 'Content-Type': 'multipart/form-data' },
+    });
+};
