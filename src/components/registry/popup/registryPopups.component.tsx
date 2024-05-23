@@ -59,7 +59,7 @@ export const RegistryUpdatePopup = ({
                     </PopupField>
                     <PopupField>
                         <span className={css.info_field_item}>Excel файл:</span>
-                        <input type="file" />
+                        <input type="file" accept={'.xlsx'} />
                     </PopupField>
                     <PopupFooter>
                         <ConfirmButton

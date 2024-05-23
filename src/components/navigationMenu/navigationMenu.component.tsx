@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { DebugInfo } from '../debugInfo/debugInfo.component.tsx';
 import { useSystemStore } from '../../stores/system.store.ts';
 import { PermissionRequiredComponent } from '../permissionRequired/permissionRequired.component.tsx';
+import { YellowButton } from '../popupUI/popup.component.tsx';
 
 export const NavigationMenuComponent = () => {
     const useAuth = useAuthState();
@@ -71,15 +72,15 @@ export const NavigationMenuComponent = () => {
             </div>
             <div className={css.menu}>
                 <PermissionRequiredComponent permissions={['admin.access']}>
-                    <button
+                    <YellowButton
+                        title={'Debug'}
                         onClick={() =>
                             useSystem.show_debug.set(
                                 !useSystem.show_debug.get()
                             )
                         }
-                    >
-                        debug
-                    </button>
+                        useMargin={false}
+                    />
                     {
                         <NavigationMenuElementComponent
                             icon={'admin_panel_settings'}
@@ -88,7 +89,6 @@ export const NavigationMenuComponent = () => {
                         />
                     }
                 </PermissionRequiredComponent>
-                {/*{<NavigationMenuElementComponent icon={'admin_panel_settings'} title={'Я'} link={'/me'}/>}*/}
             </div>
         </div>
     );
