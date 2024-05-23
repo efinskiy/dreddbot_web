@@ -26,12 +26,18 @@
     min-width: 120px;
     width: 30%;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .table_md_field {
     min-width: 124px;
     width: 15%;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .table_button_field {

@@ -28,7 +28,7 @@ export const RegistryRow = ({
     };
 
     const downloadRegistry = () => {
-        DownloadRegistry(registry.id).then(() => {});
+        DownloadRegistry(registry.id, registry.name);
     };
 
     return (

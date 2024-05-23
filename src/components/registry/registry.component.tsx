@@ -7,7 +7,7 @@ import { useSystemStore } from '../../stores/system.store.ts';
 import { updateCfData } from '../../utils/debug.ts';
 import { RegistryRow } from '../registryRow/registryRow.component.tsx';
 import {
-    RegistryDeleteConfirmPopup,
+    // RegistryDeleteConfirmPopup,
     RegistryUpdatePopup,
 } from './popup/registryPopups.component.tsx';
 
@@ -33,14 +33,14 @@ export const RegistryComponent = () => {
         Registry | undefined
     >();
 
-    const [deletePopupOpen, setDeletePopupOpen] = useState<boolean>(false);
+    // const [deletePopupOpen, setDeletePopupOpen] = useState<boolean>(false);
 
     useEffect(() => {
         GetAllRegistries().then((d) => {
             setRegistries(d.data);
             updateCfData(d, useSystem);
         });
-    }, []);
+    }, [useSystem]);
 
     return (
         <>
