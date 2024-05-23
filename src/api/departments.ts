@@ -14,6 +14,18 @@ export const GetAllDepartments = async () => {
     });
 };
 
+export const CreateDepartment = async (title: string) => {
+    return await axios.post<IDepartment>(
+        routes.DEPARTMENT_GET_CREATE,
+        {
+            name: title,
+        },
+        {
+            headers: HEADERS,
+        }
+    );
+};
+
 export const GetDepartment = async (id: number) => {
     return await axios.get<IDepartment>(routes.DEPARTMENT_GET_ONE, {
         headers: HEADERS,

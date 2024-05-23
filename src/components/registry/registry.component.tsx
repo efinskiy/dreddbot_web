@@ -6,6 +6,10 @@ import { GetAllRegistries } from '../../api/registries.ts';
 import { useSystemStore } from '../../stores/system.store.ts';
 import { updateCfData } from '../../utils/debug.ts';
 import { RegistryRow } from '../registryRow/registryRow.component.tsx';
+import {
+    RegistryDeleteConfirmPopup,
+    RegistryUpdatePopup,
+} from './popup/registryPopups.component.tsx';
 
 const RegistryRowHeader = () => {
     return (
@@ -14,6 +18,7 @@ const RegistryRowHeader = () => {
             <span className={css.table_long_field}>Название</span>
             <span className={css.table_long_field}>Отдел</span>
             <span className={css.table_md_field}>Дата</span>
+            <span className={css.table_button_field}>Скачать</span>
             <span className={css.table_button_field}>Обновить</span>
             <span className={css.table_button_field}>Удалить</span>
         </div>
@@ -23,6 +28,12 @@ const RegistryRowHeader = () => {
 export const RegistryComponent = () => {
     const [registries, setRegistries] = useState<IRegistry[]>([]);
     const useSystem = useSystemStore();
+    const [updatePopupOpen, setUpdatePopupOpen] = useState<boolean>(false);
+    const [updatePopupRegistry, setUpdatePopupRegistry] = useState<
+        IRegistry | undefined
+    >();
+
+    const [deletePopupOpen, setDeletePopupOpen] = useState<boolean>(false);
 
     useEffect(() => {
         GetAllRegistries().then((d) => {
@@ -33,15 +44,27 @@ export const RegistryComponent = () => {
 
     return (
         <>
+            <RegistryUpdatePopup
+                isOpen={updatePopupOpen}
+                setOpen={setUpdatePopupOpen}
+                selectedRegistry={updatePopupRegistry}
+            />
+            {/*<RegistryDeleteConfirmPopup />*/}
             <div className={css.component}>
                 <div className={css.navigation}>
                     <h3 className={css.navigation_title}>Реестры.</h3>
+                    <button className={css.create_button}>Создать</button>
                 </div>
 
                 <div className={css.registries_table}>
                     <RegistryRowHeader />
                     {registries.map((r) => (
-                        <RegistryRow registry={r} key={r.id} />
+                        <RegistryRow
+                            registry={r}
+                            key={r.id}
+                            updatePopupRegistry={setUpdatePopupRegistry}
+                            updatePopupOpen={setUpdatePopupOpen}
+                        />
                     ))}
                 </div>
             </div>

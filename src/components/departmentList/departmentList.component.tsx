@@ -23,7 +23,12 @@ export const DepartmentListComponent = () => {
 
     return (
         <div className={css.departments}>
-            <CreateDepartmentPopup isOpen={popupOpen} setOpen={setPopupOpen} />
+            <CreateDepartmentPopup
+                isOpen={popupOpen}
+                setOpen={setPopupOpen}
+                setDepartments={setDepartments}
+                departments={departments}
+            />
             <div className={css.departments_title_container}>
                 <h3 className={css.departments_title}>Список отделов</h3>
                 <Button

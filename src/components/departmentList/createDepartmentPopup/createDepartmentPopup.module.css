@@ -33,6 +33,17 @@
     margin-bottom: 8px;
 }
 
+.info_field {
+    width: 100%;
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.info_field_item {
+    padding-right: 8px;
+    font-size: 16px;
+}
+
 .field_input {
     width: 300px;
     border: none;
