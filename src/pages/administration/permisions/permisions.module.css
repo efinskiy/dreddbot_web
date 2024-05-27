@@ -1,0 +1,14 @@
+.wrap {
+    display: flex;
+    height: 144px;
+    align-items: flex-start;
+    margin-top: 24px;
+}
+.space {
+    width: 140px;
+}
+
+.label {
+    transform: rotate(90deg);
+    width: 40px;
+}

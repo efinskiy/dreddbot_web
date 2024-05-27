@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 
-const _BASE_URL = 'http://bot.local:8000';
+const _BASE_URL = 'http://backend.local:8000';
 
 export const HEADERS = {
     Authorization: `Bearer ${Cookies.get('at')}`,
@@ -31,4 +31,9 @@ export const routes = {
     REGISTRY_NEW: `${_BASE_URL}/registries/new`,
     REGISTRY_UPDATE: `${_BASE_URL}/registries/update`,
     REGISTRY_DELETE: `${_BASE_URL}/registries/delete/`,
+
+    PERMISSIONS_GET: `${_BASE_URL}/permissions/`,
+    PERMISSIONS_GET_USERS: `${_BASE_URL}/permissions/get_users`,
+    PERMISSIONS_ASSIGN: `${_BASE_URL}/permissions/assign`,
+    PERMISSIONS_REVORK: `${_BASE_URL}/permissions/revoke`,
 };
