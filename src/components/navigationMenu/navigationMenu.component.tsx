@@ -32,7 +32,7 @@ export const NavigationMenuComponent = () => {
             ) : null}
             <div className={css.menu}>
                 <div className={css.logo}></div>
-                <PermissionRequiredComponent permissions={['user.read']}>
+                <PermissionRequiredComponent permissions={['users.read']}>
                     {
                         <NavigationMenuElementComponent
                             icon={'account_circle'}
