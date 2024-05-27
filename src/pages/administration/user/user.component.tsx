@@ -14,7 +14,7 @@ export const User = ({ user, permissions, onClick }: UserProps) => {
 
     return (
         <div className={css.wrap}>
-            <span className={css.name}>{user.full_name}</span>
+            <span className={css.name}>{user.commentary}</span>
             <div>
                 {permissions.map((p) => (
                     <InputControll
