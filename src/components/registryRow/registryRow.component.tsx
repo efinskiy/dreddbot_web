@@ -2,15 +2,19 @@ import classNames from 'classnames';
 import { Registry } from '../../types/registry.ts';
 import css from '../registry/registry.module.css';
 import React from 'react';
-import { DownloadRegistry } from '../../api/registries.ts';
+import { DeleteRegistry, DownloadRegistry } from '../../api/registries.ts';
 import {
     ConfirmButton,
     DangerButton,
     YellowButton,
 } from '../popupUI/popup.component.tsx';
+import { Slide, toast, ToastContainer } from 'react-toastify';
+import { useSystemStore } from '../../stores/system.store.ts';
+import { updateCfData } from '../../utils/debug.ts';
 
 interface Props {
     registry: Registry;
+    setRegistry: React.Dispatch<React.SetStateAction<Registry[]>>;
     updatePopupOpen: React.Dispatch<React.SetStateAction<boolean>>;
     updatePopupRegistry: React.Dispatch<
         React.SetStateAction<Registry | undefined>
@@ -21,7 +25,10 @@ export const RegistryRow = ({
     registry,
     updatePopupRegistry,
     updatePopupOpen,
+    setRegistry,
 }: Props) => {
+    const useSystem = useSystemStore();
+
     const openUpdatePopup = () => {
         updatePopupRegistry(registry);
         updatePopupOpen(true);
@@ -31,35 +38,82 @@ export const RegistryRow = ({
         DownloadRegistry(registry.id, registry.name);
     };
 
+    const deleteRegistry = () => {
+        DeleteRegistry(registry.id)
+            .then((res) => {
+                updateCfData(res, useSystem);
+                setRegistry((prev) => prev.filter((v) => v.id !== registry.id));
+                toast.success('Реестр удален.', {
+                    position: 'top-right',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: false,
+                    progress: undefined,
+                    theme: 'light',
+                    transition: Slide,
+                });
+            })
+            .catch((err) => {
+                toast.success(`Произошла ошибка удаления: ${err}`, {
+                    position: 'top-right',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: false,
+                    progress: undefined,
+                    theme: 'light',
+                    transition: Slide,
+                });
+            });
+    };
+
     return (
-        <div className={classNames(css.table_row, css.table_row_header)}>
-            <span className={css.table_small_field}>{registry.id}</span>
-            <span className={css.table_long_field}>{registry.name}</span>
-            <span className={css.table_long_field}>
-                {registry.department.name}
-            </span>
-            <span className={css.table_md_field}>{registry.for_date}</span>
-            <div className={css.table_button_field}>
-                <ConfirmButton
-                    title={'Скачать'}
-                    onClick={() => downloadRegistry()}
-                    useMargin={false}
-                />
+        <>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable={false}
+                pauseOnHover
+                theme="light"
+                transition={Slide}
+            />
+            <div className={classNames(css.table_row, css.table_row_header)}>
+                <span className={css.table_small_field}>{registry.id}</span>
+                <span className={css.table_long_field}>{registry.name}</span>
+                <span className={css.table_long_field}>
+                    {registry.department.name}
+                </span>
+                <span className={css.table_md_field}>{registry.for_date}</span>
+                <div className={css.table_button_field}>
+                    <ConfirmButton
+                        title={'Скачать'}
+                        onClick={() => downloadRegistry()}
+                        useMargin={false}
+                    />
+                </div>
+                <div className={css.table_button_field}>
+                    <YellowButton
+                        title={'Обновить'}
+                        onClick={() => openUpdatePopup()}
+                        useMargin={false}
+                    />
+                </div>
+                <div className={css.table_button_field}>
+                    <DangerButton
+                        title={'Удалить'}
+                        onClick={() => deleteRegistry()}
+                        useMargin={false}
+                    />
+                </div>
             </div>
-            <div className={css.table_button_field}>
-                <YellowButton
-                    title={'Обновить'}
-                    onClick={() => openUpdatePopup()}
-                    useMargin={false}
-                />
-            </div>
-            <div className={css.table_button_field}>
-                <DangerButton
-                    title={'Удалить'}
-                    onClick={() => null}
-                    useMargin={false}
-                />
-            </div>
-        </div>
+        </>
     );
 };

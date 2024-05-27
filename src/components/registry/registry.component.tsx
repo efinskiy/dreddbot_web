@@ -55,6 +55,7 @@ export const RegistryComponent = () => {
             <RegistryNewPopup
                 isOpen={newRegistryPopupOpen}
                 setOpen={setNewRegistryPopupOpen}
+                registrySet={setRegistries}
             />
             {/*<RegistryDeleteConfirmPopup />*/}
             <div className={css.component}>
@@ -73,6 +74,7 @@ export const RegistryComponent = () => {
                     {registries.map((r) => (
                         <RegistryRow
                             registry={r}
+                            setRegistry={setRegistries}
                             key={r.id}
                             updatePopupRegistry={setUpdatePopupRegistry}
                             updatePopupOpen={setUpdatePopupOpen}

@@ -1,5 +1,5 @@
 import Popup from 'reactjs-popup';
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import css from '../../popupUI/popup.module.css';
 import { Slide, toast, ToastContainer } from 'react-toastify';
 import { Registry } from '../../../types/registry.ts';
@@ -11,9 +11,10 @@ import {
     PopupFooter,
     PopupHeader,
 } from '../../popupUI/popup.component.tsx';
-import { UpdateRegistry } from '../../../api/registries.ts';
+import { CreateRegistry, UpdateRegistry } from '../../../api/registries.ts';
 import { updateCfData } from '../../../utils/debug.ts';
 import { useSystemStore } from '../../../stores/system.store.ts';
+import { GetAllDepartments } from '../../../api/departments.ts';
 
 interface UpdateProps {
     isOpen: boolean;
@@ -24,15 +25,115 @@ interface UpdateProps {
 interface NewRegistryProps {
     isOpen: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    registrySet: React.Dispatch<React.SetStateAction<Registry[]>>;
 }
 
-export const RegistryNewPopup = ({ isOpen, setOpen }: NewRegistryProps) => {
+interface DepartmentInSelect {
+    id: number;
+    title: string;
+}
+
+export const RegistryNewPopup = ({
+    isOpen,
+    setOpen,
+    registrySet,
+}: NewRegistryProps) => {
+    const [title, setTitle] = useState('');
+    const [date, setDate] = useState('');
+    const [departmentId, setDepartmentId] = useState('0');
+    const [file, setFile] = useState<File | null>(null);
+    const [departments, setDepartments] = useState<DepartmentInSelect[]>([
+        { id: 0, title: 'Отдел' },
+    ]);
+    const useSystem = useSystemStore();
+
+    useEffect(() => {
+        GetAllDepartments().then((d) =>
+            setDepartments([
+                { id: 0, title: 'Выбор отдела' },
+                ...d.data.map((dep) => ({ id: dep.id, title: dep.name })),
+            ])
+        );
+    }, []);
+
+    const handleCreateButton = () => {
+        if (file && departmentId && date && title) {
+            CreateRegistry(file, title, date, departmentId)
+                .then((res) => {
+                    updateCfData(res, useSystem);
+                    registrySet((prev) => [...prev, res.data]);
+                    toast.success('Реестр добавлен.', {
+                        position: 'top-right',
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: false,
+                        progress: undefined,
+                        theme: 'light',
+                        transition: Slide,
+                    });
+                })
+                .catch((res) => {
+                    toast.error(`Ошибка: ${res}`, {
+                        position: 'top-right',
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: false,
+                        progress: undefined,
+                        theme: 'light',
+                        transition: Slide,
+                    });
+                });
+        }
+    };
+
+    const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setTitle(e.target.value);
+    };
+
+    const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const dt = e.target.value;
+        // const formattedString = '';
+        const formattedString = new Date(Date.parse(dt)).toLocaleDateString(
+            'ru-RU'
+        );
+        setDate(formattedString);
+    };
+
+    const handleDepartmentChange = (
+        e: React.ChangeEvent<HTMLSelectElement>
+    ) => {
+        setDepartmentId(e.target.value);
+    };
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            setFile(e.target.files[0]);
+        }
+    };
+
     return (
         <Popup
             open={isOpen}
             closeOnDocumentClick
             onClose={() => setOpen(false)}
         >
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable={false}
+                pauseOnHover
+                theme="light"
+                transition={Slide}
+            />
             <PopupBody>
                 <PopupHeader title={'Новый реестр'} setOpen={setOpen} />
                 <PopupContent>
@@ -40,20 +141,40 @@ export const RegistryNewPopup = ({ isOpen, setOpen }: NewRegistryProps) => {
                         <span className={css.info_field_item}>
                             Название реестра:
                         </span>
-                        <input type="text" className={css.field_input} />
+                        <input
+                            type="text"
+                            className={css.field_input}
+                            onChange={(e) => handleTitleChange(e)}
+                            value={title}
+                        />
                     </PopupField>
                     <PopupField>
                         <span className={css.info_field_item}>
                             Дата реестра:
                         </span>
-                        <input type="date" className={css.field_input} />
+                        <input
+                            type="date"
+                            className={css.field_input}
+                            onChange={(e) => handleDateChange(e)}
+                        />
                     </PopupField>
                     <PopupField>
                         <span className={css.info_field_item}>Отдел:</span>
-                        <select defaultValue={'0'} className={css.field_input}>
-                            <option value="0" disabled={true}>
+                        <select
+                            defaultValue={'0'}
+                            className={css.field_input}
+                            onChange={(e) => handleDepartmentChange(e)}
+                        >
+                            <option value="0" id={'0'} disabled={true}>
                                 Выбор отдела
                             </option>
+                            {departments.map((d) =>
+                                d.id != 0 ? (
+                                    <option value={d.id} id={d.id.toString()}>
+                                        {d.title}
+                                    </option>
+                                ) : null
+                            )}
                         </select>
                     </PopupField>
                     <PopupField>
@@ -61,16 +182,14 @@ export const RegistryNewPopup = ({ isOpen, setOpen }: NewRegistryProps) => {
                         <input
                             type="file"
                             accept={'.xlsx'}
-                            onChange={(e) => {
-                                e;
-                            }}
+                            onChange={(e) => handleFileChange(e)}
                             className={css.field_input}
                         />
                     </PopupField>
                     <PopupFooter>
                         <ConfirmButton
                             title={'Создать'}
-                            onClick={() => {}}
+                            onClick={() => handleCreateButton()}
                             useMargin={true}
                         />
                     </PopupFooter>
