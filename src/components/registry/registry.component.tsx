@@ -1,6 +1,6 @@
 import css from './registry.module.css';
 import classNames from 'classnames';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Registry } from '../../types/registry.ts';
 import { GetAllRegistries } from '../../api/registries.ts';
 import { useSystemStore } from '../../stores/system.store.ts';
@@ -11,6 +11,8 @@ import {
     // RegistryDeleteConfirmPopup,
     RegistryUpdatePopup,
 } from './popup/registryPopups.component.tsx';
+import { Slide, ToastContainer } from 'react-toastify';
+import { PermissionRequiredComponent } from '../permissionRequired/permissionRequired.component.tsx';
 
 const RegistryRowHeader = () => {
     return (
@@ -20,8 +22,12 @@ const RegistryRowHeader = () => {
             <span className={css.table_long_field}>Отдел</span>
             <span className={css.table_md_field}>Дата</span>
             <span className={css.table_button_field}>Скачать</span>
-            <span className={css.table_button_field}>Обновить</span>
-            <span className={css.table_button_field}>Удалить</span>
+            <PermissionRequiredComponent permissions={['registry.write']}>
+                <span className={css.table_button_field}>Обновить</span>
+            </PermissionRequiredComponent>
+            <PermissionRequiredComponent permissions={['registry.delete']}>
+                <span className={css.table_button_field}>Удалить</span>
+            </PermissionRequiredComponent>
         </div>
     );
 };
@@ -57,16 +63,34 @@ export const RegistryComponent = () => {
                 setOpen={setNewRegistryPopupOpen}
                 registrySet={setRegistries}
             />
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable={false}
+                pauseOnHover
+                theme="light"
+                transition={Slide}
+                containerId={'RegistryContainer'}
+            />
             {/*<RegistryDeleteConfirmPopup />*/}
             <div className={css.component}>
                 <div className={css.navigation}>
                     <h3 className={css.navigation_title}>Реестры.</h3>
-                    <button
-                        className={css.create_button}
-                        onClick={() => setNewRegistryPopupOpen(true)}
+                    <PermissionRequiredComponent
+                        permissions={['registry.write']}
                     >
-                        Создать
-                    </button>
+                        <button
+                            className={css.create_button}
+                            onClick={() => setNewRegistryPopupOpen(true)}
+                        >
+                            Создать
+                        </button>
+                    </PermissionRequiredComponent>
                 </div>
 
                 <div className={css.registries_table}>

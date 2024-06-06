@@ -18,6 +18,7 @@ import { DepartmentObjectEditManageablesComponent } from './components/departmen
 import { ManageableComponent } from './pages/manageable/manageable.component.tsx';
 import { ManageableContentComponent } from './components/manageableContent/manageableContent.component.tsx';
 import { RegistryComponent } from './components/registry/registry.component.tsx';
+import { PermissionsComponent } from './pages/administration/permissionsComponent/permissions.component.tsx';
 // import {useEffect} from "react";
 // import {get_users} from "./api/users.ts";
 // import {writeUsers} from "./stores/users.store.ts";
@@ -97,7 +98,16 @@ const router = createBrowserRouter([
             {
                 path: '/administration',
                 element: <AdministrationComponent />,
-                children: [],
+                children: [
+                    {
+                        path: '/administration',
+                        element: <EmptyOutletComponent />,
+                    },
+                    {
+                        path: '/administration/matrix',
+                        element: <PermissionsComponent />,
+                    },
+                ],
             },
             {
                 path: '/registries',

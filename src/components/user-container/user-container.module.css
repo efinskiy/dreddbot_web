@@ -7,11 +7,16 @@
     overflow: scroll;
     overflow-x: hidden;
 }
+
 .container {
     margin: 14px 8px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+}
+
+.manageables_container {
+    margin-top: 24px;
 }
 
 .container__title {
@@ -23,6 +28,11 @@
 .container__row {
     margin: 8px 0;
     font-size: 20px;
+}
+
+.split {
+    display: flex;
+    flex-direction: row;
 }
 
 .container__buttons {
@@ -37,4 +47,44 @@
     display: flex;
     column-gap: 24px;
     color: darkgray;
+}
+
+.image_container {
+    width: 240px;
+    height: 240px;
+    position: relative;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+}
+
+.image:before {
+    content: "" "Изображение отсутствует.";
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: calc(50% - 24px);
+    font-size: 24px;
+    color: darkgray;
+}
+
+
+.image_placeholder {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    font-size: 24px;
+    color: darkgray;
+}
+
+.user_image {
+    width: 240px;
+    height: 240px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-clip: border-box;
 }

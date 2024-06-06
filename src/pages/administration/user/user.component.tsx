@@ -15,7 +15,7 @@ export const User = ({ user, permissions, onClick }: UserProps) => {
     return (
         <div className={css.wrap}>
             <span className={css.name}>{user.commentary}</span>
-            <div>
+            <div style={{ display: 'flex' }}>
                 {permissions.map((p) => (
                     <InputControll
                         isCheckedInit={user.permissions

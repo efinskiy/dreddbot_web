@@ -11,6 +11,7 @@ import {
 import { Slide, toast, ToastContainer } from 'react-toastify';
 import { useSystemStore } from '../../stores/system.store.ts';
 import { updateCfData } from '../../utils/debug.ts';
+import { PermissionRequiredComponent } from '../permissionRequired/permissionRequired.component.tsx';
 
 interface Props {
     registry: Registry;
@@ -53,6 +54,7 @@ export const RegistryRow = ({
                     progress: undefined,
                     theme: 'light',
                     transition: Slide,
+                    containerId: 'RegistryContainer',
                 });
             })
             .catch((err) => {
@@ -66,25 +68,13 @@ export const RegistryRow = ({
                     progress: undefined,
                     theme: 'light',
                     transition: Slide,
+                    containerId: 'RegistryContainer',
                 });
             });
     };
 
     return (
         <>
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable={false}
-                pauseOnHover
-                theme="light"
-                transition={Slide}
-            />
             <div className={classNames(css.table_row, css.table_row_header)}>
                 <span className={css.table_small_field}>{registry.id}</span>
                 <span className={css.table_long_field}>{registry.name}</span>
@@ -99,20 +89,24 @@ export const RegistryRow = ({
                         useMargin={false}
                     />
                 </div>
-                <div className={css.table_button_field}>
-                    <YellowButton
-                        title={'Обновить'}
-                        onClick={() => openUpdatePopup()}
-                        useMargin={false}
-                    />
-                </div>
-                <div className={css.table_button_field}>
-                    <DangerButton
-                        title={'Удалить'}
-                        onClick={() => deleteRegistry()}
-                        useMargin={false}
-                    />
-                </div>
+                <PermissionRequiredComponent permissions={['registry.write']}>
+                    <div className={css.table_button_field}>
+                        <YellowButton
+                            title={'Обновить'}
+                            onClick={() => openUpdatePopup()}
+                            useMargin={false}
+                        />
+                    </div>
+                </PermissionRequiredComponent>
+                <PermissionRequiredComponent permissions={['registry.delete']}>
+                    <div className={css.table_button_field}>
+                        <DangerButton
+                            title={'Удалить'}
+                            onClick={() => deleteRegistry()}
+                            useMargin={false}
+                        />
+                    </div>
+                </PermissionRequiredComponent>
             </div>
         </>
     );

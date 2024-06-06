@@ -43,6 +43,7 @@ export const SearchInputComponent = () => {
                 writeUsers(
                     allUsers
                         .filter((user) => !user.is_trusted)
+                        .filter((user) => !user.is_fired)
                         .filter((user) => user.commentary?.includes(search))
                 );
                 break;

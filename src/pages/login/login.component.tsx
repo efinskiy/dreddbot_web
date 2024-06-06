@@ -35,7 +35,8 @@ export const Login = () => {
             <h1 className={css.title}>Login</h1>
             <h2 className={css.subtitle}>Judge Web Interface</h2>
             <TLoginButton
-                botName="cfdredd_bot"
+                // botName="cfdredd_bot"
+                botName="dredddev_bot"
                 buttonSize={TLoginButtonSize.Large}
                 lang="ru"
                 usePic={true}

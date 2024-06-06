@@ -4,6 +4,7 @@ import { kick_user } from '../../api/users.ts';
 import { useSystemStore } from '../../stores/system.store.ts';
 import { updateCfData } from '../../utils/debug.ts';
 import css from './manageable-block.module.css';
+import { PermissionRequiredComponent } from '../permissionRequired/permissionRequired.component.tsx';
 
 export interface IManageableBlockComponent {
     manageable: Manageable;
@@ -28,7 +29,12 @@ export const ManageableBlockComponent = ({
     return (
         <div className={css.container}>
             <span className={css.title}>{manageable.title}</span>
-            <Button title={'Исключить'} onClick={() => kick(manageable.id)} />
+            <PermissionRequiredComponent permissions={['users.kick']}>
+                <Button
+                    title={'Исключить'}
+                    onClick={() => kick(manageable.id)}
+                />
+            </PermissionRequiredComponent>
         </div>
     );
 };

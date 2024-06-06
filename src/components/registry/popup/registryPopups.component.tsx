@@ -1,7 +1,7 @@
 import Popup from 'reactjs-popup';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import css from '../../popupUI/popup.module.css';
-import { Slide, toast, ToastContainer } from 'react-toastify';
+import { Slide, toast } from 'react-toastify';
 import { Registry } from '../../../types/registry.ts';
 import {
     ConfirmButton,
@@ -72,6 +72,7 @@ export const RegistryNewPopup = ({
                         progress: undefined,
                         theme: 'light',
                         transition: Slide,
+                        containerId: 'RegistryContainer',
                     });
                 })
                 .catch((res) => {
@@ -85,6 +86,7 @@ export const RegistryNewPopup = ({
                         progress: undefined,
                         theme: 'light',
                         transition: Slide,
+                        containerId: 'RegistryContainer',
                     });
                 });
         }
@@ -121,19 +123,6 @@ export const RegistryNewPopup = ({
             closeOnDocumentClick
             onClose={() => setOpen(false)}
         >
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable={false}
-                pauseOnHover
-                theme="light"
-                transition={Slide}
-            />
             <PopupBody>
                 <PopupHeader title={'Новый реестр'} setOpen={setOpen} />
                 <PopupContent>
@@ -242,6 +231,7 @@ export const RegistryUpdatePopup = ({
                         progress: undefined,
                         theme: 'light',
                         transition: Slide,
+                        containerId: 'RegistryContainer',
                     });
                 })
                 .catch((res) => {
@@ -255,6 +245,7 @@ export const RegistryUpdatePopup = ({
                         progress: undefined,
                         theme: 'light',
                         transition: Slide,
+                        containerId: 'RegistryContainer',
                     });
                     console.log(res);
                 });
@@ -268,20 +259,6 @@ export const RegistryUpdatePopup = ({
             closeOnDocumentClick
             onClose={() => setOpen(false)}
         >
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable={false}
-                pauseOnHover
-                theme="light"
-                transition={Slide}
-            />
-
             <PopupBody>
                 <PopupHeader
                     title={`Обновить реестр: ${selectedRegistry?.name}`}
