@@ -45,6 +45,8 @@ export const RegistryNewPopup = ({
     const [departments, setDepartments] = useState<DepartmentInSelect[]>([
         { id: 0, title: 'Отдел' },
     ]);
+    const [isTimeless, setIsTimeless] = useState<boolean>(false);
+
     const useSystem = useSystemStore();
 
     useEffect(() => {
@@ -58,7 +60,7 @@ export const RegistryNewPopup = ({
 
     const handleCreateButton = () => {
         if (file && departmentId && date && title) {
-            CreateRegistry(file, title, date, departmentId)
+            CreateRegistry(file, title, date, departmentId, isTimeless)
                 .then((res) => {
                     updateCfData(res, useSystem);
                     registrySet((prev) => [...prev, res.data]);
@@ -117,6 +119,10 @@ export const RegistryNewPopup = ({
         }
     };
 
+    const handleTimelessChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setIsTimeless(e.target.checked);
+    };
+
     return (
         <Popup
             open={isOpen}
@@ -173,6 +179,16 @@ export const RegistryNewPopup = ({
                             accept={'.xlsx'}
                             onChange={(e) => handleFileChange(e)}
                             className={css.field_input}
+                        />
+                    </PopupField>
+                    <PopupField>
+                        <span className={css.info_field_item}>
+                            Не имеет срока годности:{' '}
+                        </span>
+                        <input
+                            type="checkbox"
+                            checked={isTimeless}
+                            onChange={(e) => handleTimelessChange(e)}
                         />
                     </PopupField>
                     <PopupFooter>

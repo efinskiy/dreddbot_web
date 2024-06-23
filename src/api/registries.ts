@@ -45,13 +45,15 @@ export const CreateRegistry = async (
     file: File,
     registry_name: string,
     date: string,
-    for_department: string
+    for_department: string,
+    is_timeless: boolean = false
 ) => {
     const bodyFormData = new FormData();
     bodyFormData.append('registry_name', registry_name);
     bodyFormData.append('date', date);
     bodyFormData.append('file', file);
     bodyFormData.append('for_department', for_department);
+    bodyFormData.append('is_timeless', Number(is_timeless).toString());
 
     return await axios.post(routes.REGISTRY_NEW, bodyFormData, {
         headers: { ...HEADERS, 'Content-Type': 'multipart/form-data' },
