@@ -1,8 +1,6 @@
 .main {
-    position: absolute;
-    width: 100%;
     height: 100%;
-    background: #fafafa;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    background: var(--sys-neutral-background);
 }

@@ -19,6 +19,10 @@ import { ManageableComponent } from './pages/manageable/manageable.component.tsx
 import { ManageableContentComponent } from './components/manageableContent/manageableContent.component.tsx';
 import { RegistryComponent } from './components/registry/registry.component.tsx';
 import { PermissionsComponent } from './pages/administration/permissionsComponent/permissions.component.tsx';
+import { LogoutComponent } from './pages/logout/logout.component.tsx';
+import { NotFoundComponent } from './components/404/404.component.tsx';
+import { Slide, ToastContainer } from 'react-toastify';
+import { UserSearchComponent } from './components/newUI/userSearch/userSearch.component.tsx';
 // import {useEffect} from "react";
 // import {get_users} from "./api/users.ts";
 // import {writeUsers} from "./stores/users.store.ts";
@@ -47,17 +51,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/user',
-                element: <UsersComponent />,
-                children: [
-                    {
-                        path: '/user',
-                        element: <EmptyOutletComponent />,
-                    },
-                    {
-                        path: '/user/:id',
-                        element: <UserContainerComponent />,
-                    },
-                ],
+                element: <UserSearchComponent />,
+            },
+            {
+                path: '/user/:id',
+                element: <UserContainerComponent />,
             },
             {
                 path: '/department',
@@ -114,16 +112,42 @@ const router = createBrowserRouter([
                 element: <RegistryComponent />,
                 children: [],
             },
+            {
+                path: '*',
+                element: <NotFoundComponent />,
+            },
         ],
     },
     {
         path: '/login',
         element: <Login />,
     },
+    {
+        path: '/logout',
+        element: <LogoutComponent />,
+    },
 ]);
 
 function App() {
-    return <RouterProvider router={router} />;
+    return (
+        <>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable={false}
+                pauseOnHover
+                theme="light"
+                transition={Slide}
+                containerId={'toaster'}
+            />
+            <RouterProvider router={router} />
+        </>
+    );
 }
 
 export default App;

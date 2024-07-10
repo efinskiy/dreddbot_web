@@ -16,6 +16,14 @@ export interface UserInSearch {
     commentary: string | undefined;
     is_trusted: boolean;
     is_fired: boolean;
+    has_web_access: boolean;
+}
+
+export interface PaginatedSearch {
+    count: number;
+    offset: number;
+    result: UserInSearch[];
+    total: number;
 }
 
 export interface User {

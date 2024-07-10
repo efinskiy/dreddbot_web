@@ -1,0 +1,35 @@
+.button {
+    background-color: unset;
+    color: unset;
+    padding: 6px 12px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 6px;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    line-height: 140%;
+    font-weight: normal;
+}
+
+.green {
+    background-color: #389F74;
+    color: #dfe2ec;
+}
+
+.gray {
+    outline: #6F717C solid 2px;
+    color: #6F717C;
+}
+
+.red {
+    outline: #DC0606 solid 2px;
+    color: #DC0606;
+}
+
+.fill {
+    width: 100%;
+}
+
+.stretch {
+
+}

@@ -1,8 +1,8 @@
 import { logout_user, useAuthState } from '../../stores/auth.store.ts';
 import { Outlet, redirect, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
-import { NavigationMenuComponent } from '../../components/navigationMenu/navigationMenu.component.tsx';
+import { HeaderComponent } from '../../components/header/headerComponent.tsx';
 import { get_me } from '../../api/auth.ts';
 import { updateCfData } from '../../utils/debug.ts';
 import { useSystemStore } from '../../stores/system.store.ts';
@@ -43,7 +43,7 @@ export const Layout = () => {
     }, []);
     return (
         <div className={css.main}>
-            {<NavigationMenuComponent />}
+            {<HeaderComponent />}
             {<Outlet />}
         </div>
     );

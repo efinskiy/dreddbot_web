@@ -1,12 +1,12 @@
-import { ManageableNavigationComponent } from '../../components/manageableNavigation/manageableNavigation.component.tsx';
+import { ManageableSearchComponent } from '../../components/manageableNavigation/manageableSearchComponent.tsx';
 import { Outlet } from 'react-router-dom';
 import css from './manabeable.module.css';
 
 export const ManageableComponent = () => {
     return (
         <div className={css.block}>
-            <ManageableNavigationComponent />
-            <Outlet />
+            <ManageableSearchComponent />
+            {/*<Outlet />*/}
         </div>
     );
 };

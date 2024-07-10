@@ -1,137 +1,274 @@
-:root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
+@font-face {
+    font-family: 'Inter';
     font-weight: 400;
+    src: local('Inter'), url("/fonts/Inter-Regular.ttf") format("truetype");
+}
 
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
+@font-face {
+    font-family: 'Inter';
+    font-weight: 300;
+    src: local('Inter'), url("/fonts/Inter-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: 200;
+    src: local('Inter'), url("/fonts/Inter-ExtraLight.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: 100;
+    src: local('Inter'), url("/fonts/Inter-Thin.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: 500;
+    src: local('Inter'), url("/fonts/Inter-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: 600;
+    src: local('Inter'), url("/fonts/Inter-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: 700;
+    src: local('Inter'), url("/fonts/Inter-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: 800;
+    src: local('Inter'), url("/fonts/Inter-ExtraBold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: 900;
+    src: local('Inter'), url("/fonts/Inter-Black.ttf") format("truetype");
+}
+
+
+:root {
+    --color-default-gray-1: #f5f5f5;
+    --color-default-gray-3: #d2d2d2;
+    --color-default-gray-6: #A0A0A0;
+    --color-default-gray-7: #6c6c6c;
+    --color-default-black-1: #1B1B1B;
+    --color-default-black-2: #343F48;
+    --color-default-green-5: #07E897;
+    --color-default-white: #ffffff;
+    --color-default-red-1: #e84e58;
+    --color-grey-0: #ffffff;
+    --color-grey-25: #f8f8f8;
+    --color-grey-50: #f2f2f2;
+    --color-grey-100: #e6e6e6;
+    --color-grey-150: #d9d9d9;
+    --color-grey-200: #cccccc;
+    --color-grey-250: #bfbfbf;
+    --color-grey-300: #b2b2b2;
+    --color-grey-350: #a6a6a6;
+    --color-grey-400: #999999;
+    --color-grey-450: #8c8c8c;
+    --color-grey-500: #808080;
+    --color-grey-550: #737373;
+    --color-grey-600: #666666;
+    --color-grey-650: #595959;
+    --color-grey-700: #4d4d4d;
+    --color-grey-750: #404040;
+    --color-grey-800: #333333;
+    --color-grey-850: #262626;
+    --color-grey-900: #1a1a1a;
+    --color-grey-1000: #000000;
+    --color-purple-5: #f6f6f6;
+    --color-purple-10: #eeeeff;
+    --color-purple-25: #d5d5fe;
+    --color-purple-50: #aaabfd;
+    --color-purple-75: #8082fb;
+    --color-purple-100: #5558fa;
+    --color-purple-115: #484bd5;
+    --color-purple-125: #4042bc;
+    --color-purple-150: #282c7d;
+    --color-green-5: #f2fefa;
+    --color-green-10: #e6fdf5;
+    --color-green-25: #c1f9e5;
+    --color-green-50: #83f4cb;
+    --color-green-75: #45eeb1;
+    --color-green-100: #07e897;
+    --color-green-115: #06d58b;
+    --color-green-125: #06c37f;
+    --color-green-150: #03734b;
+    --color-black-alfa-48: rgba(0, 0, 0, 0.48);
+    --color-black-alfa-24: rgba(0, 0, 0, 0.24);
+    --color-black-alfa-16: rgba(0, 0, 0, 0.16);
+    --color-black-alfa-8: rgba(0, 0, 0, 0.08);
+    --color-black-alfa-4: rgba(0, 0, 0, 0.04);
+    --color-white-alfa-48: rgba(255, 255, 255, 0.48);
+    --color-white-alfa-24: rgba(255, 255, 255, 0.24);
+    --color-white-alfa-16: rgba(255, 255, 255, 0.16);
+    --color-white-alfa-8: rgba(255, 255, 255, 0.08);
+    --color-white-alfa-4: rgba(255, 255, 255, 0.04);
+    --color-purple-alfa-48: rgba(85, 88, 250, 0.48);
+    --color-purple-alfa-24: rgba(85, 88, 250, 0.24);
+    --color-purple-alfa-16: rgba(85, 88, 250, 0.16);
+    --color-purple-alfa-8: rgba(85, 88, 250, 0.08);
+    --color-purple-alfa-4: rgba(85, 88, 250, 0.04);
+    --color-green-alfa-48: rgba(7, 232, 151, 0.48);
+    --color-green-alfa-24: rgba(7, 232, 151, 0.24);
+    --color-green-alfa-16: rgba(7, 232, 151, 0.16);
+    --color-green-alfa-8: rgba(7, 232, 151, 0.08);
+    --color-green-alfa-4: rgba(7, 232, 151, 0.04);
+    --color-blue-grey-5: #f4f4f5;
+    --color-blue-grey-10: #e9e9ea;
+    --color-blue-grey-20: #d3d4d6;
+    --color-blue-grey-30: #bcbfc1;
+    --color-blue-grey-40: #a6a9ac;
+    --color-blue-grey-50: #909497;
+    --color-blue-grey-60: #7a7e83;
+    --color-blue-grey-70: #63696e;
+    --color-blue-grey-80: #4d5359;
+    --color-blue-grey-90: #373e45;
+    --color-blue-grey-100: #212830;
+    --color-berry-red-25: #f9d3d5;
+    --color-berry-red-50: #f4a7ab;
+    --color-berry-red-75: #ee7a82;
+    --color-berry-red-100: #e84e58;
+    --color-berry-red-115: #c5424b;
+    --color-berry-red-125: #ae3b42;
+    --color-berry-red-150: #74272c;
+    --color-berry-red-alpha-15: rgba(232, 78, 88, 0.15);
+    --color-berry-red-alpha-25: rgba(232, 78, 88, 0.25);
+    --color-sunny-yellow-75: #f2db72;
+    --color-sunny-yellow-100: #f0d559;
+    --color-sunny-yellow-115: #ccb54c;
+    --color-sunny-yellow-alpha-15: rgba(240, 213, 89, 0.15);
+    --color-sunny-yellow-alpha-50: rgba(240, 213, 89, 0.5);
+    --color-grace-1: #02e497;
+    --color-grace-2: #0dc8a2;
+    --color-grace-3: #19abac;
+    --color-grace-4: #229485;
+    --color-grace-5: #2883bb;
+    --color-grace-6: #316cc4;
+    --color-grace-7: #3a56cc;
+    --color-grace-8: #5c00ec;
+    --color-grace-9: #7818cf;
+    --color-grace-10: #8828bb;
+    --color-grace-11: #9933ad;
+    --color-grace-12: #a53da0;
+    --color-grace-13: #ae4597;
+    --color-grace-14: #bc5191;
+    --color-grace-15: #cc5693;
+    --color-grace-16: #e05a9f;
+    --color-grace-alpha-1: rgba(2, 228, 151, 0.1);
+    --color-grace-alpha-2: rgba(13, 200, 162, 0.1);
+    --color-grace-alpha-3: rgba(25, 171, 172, 0.1);
+    --color-grace-alpha-4: rgba(34, 148, 181, 0.1);
+    --color-grace-alpha-5: rgba(40, 131, 187, 0.1);
+    --color-grace-alpha-6: rgba(49, 108, 196, 0.1);
+    --color-grace-alpha-7: rgba(58, 86, 204, 0.1);
+    --color-grace-alpha-8: rgba(92, 0, 236, 0.1);
+    --color-grace-alpha-9: rgba(120, 24, 207, 0.1);
+    --color-grace-alpha-10: rgba(139, 40, 187, 0.1);
+    --color-grace-alpha-11: rgba(153, 51, 173, 0.1);
+    --color-grace-alpha-12: rgba(165, 61, 160, 0.1);
+    --color-grace-alpha-13: rgba(174, 69, 151, 0.1);
+    --color-grace-alpha-14: rgba(188, 81, 145, 0.1);
+    --color-grace-alpha-15: rgba(204, 86, 147, 0.1);
+    --color-grace-alpha-16: rgba(224, 90, 159, 0.1);
+    --color-gradient-1: linear-gradient(90deg, #bc5188 0%, #496deb 29.17%, #0ae59a 100%);
+    --color-gradient-2: linear-gradient(90deg, #0ae59a 0%, #316cc4 100%);
+    --color-gradient-3: linear-gradient(180deg, rgba(85, 88, 250, 0.3) 0%, rgba(85, 88, 250, 0) 100%);
+    --color-gradient-4: linear-gradient(180deg, rgba(2, 228, 151, 0.3) 0%, rgba(2, 228, 151, 0) 100%);
+    --color-green-light: #d7e7e2;
+    --color-green-dark: #527771;
+    --color-yellow-light: #f9eed8;
+    --color-yellow-dark: #9e9056;
+    --color-silver-gray-light: #d7d7d6;
+    --color-silver-gray-dark: #6c6f71;
+    --color-charcoal-gray-light: #e6e6e5;
+    --color-charcoal-gray-dark: #515558;
+    --color-orange-light: #fae1d5;
+    --color-orange-dark: #9a754f;
+    --color-red-light: #f8d6d5;
+    --color-red-dark: #98605b;
+    --color-pink-light: #f5d5e5;
+    --color-pink-dark: #8a5273;
+    --color-violet-light: #d7d7f7;
+    --color-violet-dark: #6a588c;
+    --color-blue-light: #fbd6d5;
+    --color-blue-dark: #517086;
+    --color-brown-light: #e6d6d0;
+    --color-brown-dark: #517086;
+    --color-grass-light: #ecedcd;
+    --color-grass-dark: #6d784e;
+    --color-seamount-light: #e0f4f4;
+    --color-seamount-dark: #146c6c;
+    --color-emerald-green: #05ae71;
+    --color-emerald-green-alpha: rgba(5, 174, 113, 0.15);
+    --color-finded-white: #fdffaa;
+    --color-finded-black: #675d00;
+    --color-focused-white: #ffd3aa;
+    --color-focused-black: #964f0d;
+
+    --sys-neutral-background: #f1f2f6;
+    --sys-panel-stroke: #dfe2ec;
+    --sys-white: #FDFDFF;
+    --font-gray-secondary: #b3b6bf;
+    --font-gray-primary: #868892;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
+body {
     margin: 0;
     padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
 }
-/* HTML5 display-role
-	reset for older browsers
-	*/
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-    display: block;
+
+#root {
+    width: 100vw;
+    height: 100vh;
 }
+
 body {
-    line-height: 1;
+    width: 100vw;
+    height: 100vh;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--color-grey-800);
+    /*background-image: url("./background.jpg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: bottom;*/
+    /*background-size: 100% auto;*/
 }
-ol,
-ul {
-    list-style: none;
+
+a {
+    outline: none;
+    text-decoration: none;
+    color: inherit;
 }
-blockquote,
-q {
-    quotes: none;
+
+.pheader-content {
+    top: 43px;
+    left: 56px;
+    position: fixed !important;
+
 }
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-    content: '';
-    content: none;
-}
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
+
+h2 {
+    font-size: 24px;
+    font-weight: 700;
 }

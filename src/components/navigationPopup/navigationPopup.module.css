@@ -1,0 +1,36 @@
+.popup {
+    padding: 18px 24px 32px 24px;
+    display: flex;
+    flex-direction: column;
+    background: var(--sys-white);
+    box-shadow: 0 4px 12px 0 rgba(29, 33, 55, 0.25);
+    border-radius: 8px;
+    width: 333px;
+}
+
+.popup_wrapper {
+    gap: 18px 6px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.popup_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 84px;
+    gap: 10px
+}
+
+.popup_item svg {
+    fill: #656771;
+    height: 24px;
+    width: 24px;
+}
+
+.popup_item:hover {
+    svg {
+        fill: #3c9b3c;
+    }
+}

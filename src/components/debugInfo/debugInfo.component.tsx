@@ -1,4 +1,4 @@
-import css from '../navigationMenu/navigationMenu.module.css';
+import css from '../header/navigationMenu.module.css';
 import { useAuthState } from '../../stores/auth.store.ts';
 import { useSystemStore } from '../../stores/system.store.ts';
 

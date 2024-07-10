@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 
-const _BASE_URL = 'http://manager.vak.cr911:8000';
-// const _BASE_URL = 'http://bot.local:8000';
+// const _BASE_URL = 'http://manager.vak.cr911:8000';
+const _BASE_URL = 'http://bot.local:8000';
 
 export const HEADERS = {
     Authorization: `Bearer ${Cookies.get('at')}`,

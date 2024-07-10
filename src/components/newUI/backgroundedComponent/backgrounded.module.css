@@ -1,0 +1,6 @@
+.backgrounded_component {
+    padding: 24px 24px;
+    gap: 24px 24px;
+    background: var(--sys-white);
+    border-radius: 8px;
+}

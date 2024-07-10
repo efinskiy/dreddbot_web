@@ -1,6 +1,11 @@
 import axios from 'axios';
 import { HEADERS, routes } from './routes.ts';
-import { User, UserInSearch, UserUpdateResponse } from '../types/user.ts';
+import {
+    PaginatedSearch,
+    User,
+    UserInSearch,
+    UserUpdateResponse,
+} from '../types/user.ts';
 
 export const get_users = async () => {
     return await axios.get<UserInSearch[]>(routes.USERS_GET, {
@@ -8,11 +13,17 @@ export const get_users = async () => {
     });
 };
 
-export const search_users = async (search: string) => {
-    return await axios.get<UserInSearch[]>(routes.USER_SEARCH, {
+export const search_users = async (
+    search: string,
+    offset: number,
+    limit: number
+) => {
+    return await axios.get<PaginatedSearch>(routes.USER_SEARCH, {
         headers: HEADERS,
         params: {
             q: search,
+            offset: offset,
+            limit: limit,
         },
     });
 };

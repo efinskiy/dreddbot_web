@@ -7,7 +7,7 @@ import { useManageablesStore } from '../../stores/manageables.store.ts';
 import { ManageableItemComponent } from '../manageableItem/manageableItem.component.tsx';
 import { Manageable } from '../../types/manageable.ts';
 
-export const ManageableNavigationComponent = () => {
+export const ManageableSearchComponent = () => {
     const useSystem = useSystemStore();
     const useManageables = useManageablesStore();
     const [filteredManageables, setFilteredManageables] = useState<

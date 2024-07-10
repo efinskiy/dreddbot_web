@@ -1,0 +1,41 @@
+.users {
+    display: flex;
+    width: 100%;
+    background: var(--sys-neutral-background);
+    flex-direction: column;
+}
+
+.header_title_block {
+    display: flex;
+    width: 100%;
+}
+
+.nav_items {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.center_in_table {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination_buttons {
+    padding-top: 18px;
+    display: flex;
+    justify-content: right;
+    gap: 18px
+}
+
+.pagination_button {
+    padding: 4px 8px;
+    color: #3c9b3c;
+    outline: #3c9b3c solid 2px;
+    cursor: pointer;
+}
+
+.pagination_button:disabled {
+    outline: #6F717C solid 2px;
+    color: #6F717C;
+}
