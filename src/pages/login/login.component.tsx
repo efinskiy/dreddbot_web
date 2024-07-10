@@ -126,8 +126,8 @@ export const Login = () => {
                                 <div className={css.separator}>или</div>
                                 <div>
                                     <TLoginButton
-                                        // botName="cfdredd_bot"
-                                        botName="dredddev_bot"
+                                        botName="cfdredd_bot"
+                                        // botName="dredddev_bot"
                                         buttonSize={TLoginButtonSize.Large}
                                         lang="ru"
                                         usePic={true}
